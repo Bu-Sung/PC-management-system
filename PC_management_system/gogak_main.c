@@ -166,18 +166,18 @@ static const short sqlcud0[] =
 506,0,0,1,0,0,17,591,0,0,1,1,0,1,0,1,97,0,0,
 525,0,0,1,0,0,45,597,0,0,0,0,0,1,0,
 540,0,0,1,0,0,13,606,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,2,3,0,0,
-571,0,0,1,0,0,15,671,0,0,0,0,0,1,0,
-586,0,0,13,0,0,29,673,0,0,0,0,0,1,0,
-601,0,0,14,0,0,24,701,0,0,1,1,0,1,0,1,97,0,0,
-620,0,0,15,0,0,29,705,0,0,0,0,0,1,0,
-635,0,0,1,0,0,17,741,0,0,1,1,0,1,0,1,97,0,0,
-654,0,0,1,0,0,45,745,0,0,0,0,0,1,0,
-669,0,0,1,0,0,13,751,0,0,1,0,0,1,0,2,3,0,0,
-688,0,0,1,0,0,15,758,0,0,0,0,0,1,0,
-703,0,0,1,0,0,17,781,0,0,1,1,0,1,0,1,97,0,0,
-722,0,0,1,0,0,45,785,0,0,0,0,0,1,0,
-737,0,0,1,0,0,13,791,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,3,0,0,
-772,0,0,1,0,0,15,807,0,0,0,0,0,1,0,
+571,0,0,1,0,0,15,680,0,0,0,0,0,1,0,
+586,0,0,13,0,0,29,682,0,0,0,0,0,1,0,
+601,0,0,14,0,0,24,714,0,0,1,1,0,1,0,1,97,0,0,
+620,0,0,15,0,0,29,718,0,0,0,0,0,1,0,
+635,0,0,1,0,0,17,755,0,0,1,1,0,1,0,1,97,0,0,
+654,0,0,1,0,0,45,759,0,0,0,0,0,1,0,
+669,0,0,1,0,0,13,766,0,0,1,0,0,1,0,2,3,0,0,
+688,0,0,1,0,0,15,773,0,0,0,0,0,1,0,
+703,0,0,1,0,0,17,796,0,0,1,1,0,1,0,1,97,0,0,
+722,0,0,1,0,0,45,800,0,0,0,0,0,1,0,
+737,0,0,1,0,0,13,806,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,3,0,0,
+772,0,0,1,0,0,15,822,0,0,0,0,0,1,0,
 };
 
 
@@ -1836,18 +1836,27 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 	 					}
                 
            					 }else if(c==13){
+						while(1){
 						gotoxy(34,20);
 						gets_s(num, sizeof num);
 						gotoxy(54,20);
 						gets_s(number, sizeof number);
 						if(num[0]!='\0' && number[0] !='\0'){
 							buy_pro(num, number);
+							gotoxy(32,21);
+							printf("잘못된 번호입니다.");
+							getch();	
+							gotoxy(32,21);
+							printf("                            ");
+							gotoxy(25,20);
+							printf("번호 >>              수량>>                        ");
 						}else{
 							gotoxy(32,21);
 							printf("구매를 종료합니다.");
 							getch();
 							gogakMain(gogakID);
 
+						}
 						}
 					}
        			 }
@@ -1927,12 +1936,16 @@ void buy_pro(char num[10], char number[10]){
 
 	int co = atoi(number);
    int price = getPrice(num);
-	int fail;
-   /* EXEC SQL WHENEVER SQLERROR DO fail = sql_error("\7ORACLE ERROR:\n"); */ 
+	if(price==-1){
+		
+	}else{
+		
+		int fail;
+   		/* EXEC SQL WHENEVER SQLERROR DO fail = sql_error("\7ORACLE ERROR:\n"); */ 
 
   
-  
-       	sprintf(dynstmt,"insert into sales values ((nvl2((select max(snum) from sales),(select max(snum)+1 from sales),1)),'%s','%s',default,to_number(%s))", num,  gogakID, number);
+  	
+       		sprintf(dynstmt,"insert into sales values ((nvl2((select max(snum) from sales),(select max(snum)+1 from sales),1)),'%s','%s',default,to_number(%s))", num,  gogakID, number);
        		
 			gotoxy(30,21);
 		      	printf("가격은 %d입니다.",price*co);
@@ -2023,6 +2036,7 @@ void buy_pro(char num[10], char number[10]){
 				printf("                                ");
 			}
 		}
+	}
 			
 }
 /*---------------   물품 가격 찾기 함수 --------------------*/
@@ -2106,8 +2120,9 @@ int getPrice(char pro[10]){
 
  
 
-  int price;
+  int price=-1;
     /* EXEC SQL WHENEVER NOT FOUND do break; */ 
+
 
     for(;;)
     {
