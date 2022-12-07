@@ -135,43 +135,49 @@ typedef struct { unsigned short len; unsigned char arr[1]; } varchar;
 /* cud (compilation unit data) array */
 static const short sqlcud0[] =
 {13,4130,1,0,0,
-5,0,0,1,0,0,17,123,0,0,1,1,0,1,0,1,97,0,0,
-24,0,0,1,0,0,45,129,0,0,0,0,0,1,0,
-39,0,0,1,0,0,13,136,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,
-74,0,0,1,0,0,15,176,0,0,0,0,0,1,0,
-89,0,0,2,0,0,29,178,0,0,0,0,0,1,0,
-104,0,0,3,0,0,24,203,0,0,1,1,0,1,0,1,97,0,0,
-123,0,0,4,0,0,29,205,0,0,0,0,0,1,0,
-138,0,0,5,0,0,24,274,0,0,1,1,0,1,0,1,97,0,0,
-157,0,0,6,0,0,29,276,0,0,0,0,0,1,0,
-172,0,0,1,0,0,17,317,0,0,1,1,0,1,0,1,97,0,0,
-191,0,0,1,0,0,45,323,0,0,0,0,0,1,0,
-206,0,0,1,0,0,13,330,0,0,6,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
+5,0,0,1,0,0,17,125,0,0,1,1,0,1,0,1,97,0,0,
+24,0,0,1,0,0,45,131,0,0,0,0,0,1,0,
+39,0,0,1,0,0,13,138,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,
+74,0,0,1,0,0,15,178,0,0,0,0,0,1,0,
+89,0,0,2,0,0,29,180,0,0,0,0,0,1,0,
+104,0,0,3,0,0,24,205,0,0,1,1,0,1,0,1,97,0,0,
+123,0,0,4,0,0,29,207,0,0,0,0,0,1,0,
+138,0,0,5,0,0,24,276,0,0,1,1,0,1,0,1,97,0,0,
+157,0,0,6,0,0,29,278,0,0,0,0,0,1,0,
+172,0,0,1,0,0,17,319,0,0,1,1,0,1,0,1,97,0,0,
+191,0,0,1,0,0,45,325,0,0,0,0,0,1,0,
+206,0,0,1,0,0,13,332,0,0,6,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
 0,0,
-245,0,0,1,0,0,15,362,0,0,0,0,0,1,0,
-260,0,0,7,0,0,29,364,0,0,0,0,0,1,0,
-275,0,0,1,0,0,17,386,0,0,1,1,0,1,0,1,97,0,0,
-294,0,0,1,0,0,45,390,0,0,0,0,0,1,0,
-309,0,0,1,0,0,13,400,0,0,2,0,0,1,0,2,3,0,0,2,9,0,0,
-332,0,0,1,0,0,15,417,0,0,0,0,0,1,0,
-347,0,0,8,0,0,24,471,0,0,1,1,0,1,0,1,97,0,0,
-366,0,0,9,0,0,29,474,0,0,0,0,0,1,0,
-381,0,0,1,0,0,17,494,0,0,1,1,0,1,0,1,97,0,0,
-400,0,0,1,0,0,45,500,0,0,0,0,0,1,0,
-415,0,0,1,0,0,13,505,0,0,3,0,0,1,0,2,9,0,0,2,3,0,0,2,3,0,0,
-442,0,0,1,0,0,15,536,0,0,0,0,0,1,0,
-457,0,0,10,0,0,29,538,0,0,0,0,0,1,0,
-472,0,0,11,0,0,24,551,0,0,1,1,0,1,0,1,97,0,0,
-491,0,0,12,0,0,29,558,0,0,0,0,0,1,0,
-506,0,0,1,0,0,17,581,0,0,1,1,0,1,0,1,97,0,0,
-525,0,0,1,0,0,45,587,0,0,0,0,0,1,0,
-540,0,0,1,0,0,13,596,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,2,3,0,0,
-571,0,0,1,0,0,15,643,0,0,0,0,0,1,0,
-586,0,0,13,0,0,29,645,0,0,0,0,0,1,0,
-601,0,0,1,0,0,17,672,0,0,1,1,0,1,0,1,97,0,0,
-620,0,0,1,0,0,45,676,0,0,0,0,0,1,0,
-635,0,0,1,0,0,13,682,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,3,0,0,
-670,0,0,1,0,0,15,698,0,0,0,0,0,1,0,
+245,0,0,1,0,0,15,364,0,0,0,0,0,1,0,
+260,0,0,7,0,0,29,366,0,0,0,0,0,1,0,
+275,0,0,1,0,0,17,388,0,0,1,1,0,1,0,1,97,0,0,
+294,0,0,1,0,0,45,392,0,0,0,0,0,1,0,
+309,0,0,1,0,0,13,402,0,0,2,0,0,1,0,2,3,0,0,2,9,0,0,
+332,0,0,1,0,0,15,419,0,0,0,0,0,1,0,
+347,0,0,8,0,0,24,473,0,0,1,1,0,1,0,1,97,0,0,
+366,0,0,9,0,0,29,476,0,0,0,0,0,1,0,
+381,0,0,1,0,0,17,496,0,0,1,1,0,1,0,1,97,0,0,
+400,0,0,1,0,0,45,502,0,0,0,0,0,1,0,
+415,0,0,1,0,0,13,507,0,0,3,0,0,1,0,2,9,0,0,2,3,0,0,2,3,0,0,
+442,0,0,1,0,0,15,538,0,0,0,0,0,1,0,
+457,0,0,10,0,0,29,540,0,0,0,0,0,1,0,
+472,0,0,11,0,0,24,553,0,0,1,1,0,1,0,1,97,0,0,
+491,0,0,12,0,0,29,560,0,0,0,0,0,1,0,
+506,0,0,1,0,0,17,583,0,0,1,1,0,1,0,1,97,0,0,
+525,0,0,1,0,0,45,589,0,0,0,0,0,1,0,
+540,0,0,1,0,0,13,598,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,2,3,0,0,
+571,0,0,1,0,0,15,640,0,0,0,0,0,1,0,
+586,0,0,13,0,0,29,642,0,0,0,0,0,1,0,
+601,0,0,14,0,0,24,675,0,0,1,1,0,1,0,1,97,0,0,
+620,0,0,15,0,0,29,677,0,0,0,0,0,1,0,
+635,0,0,1,0,0,17,706,0,0,1,1,0,1,0,1,97,0,0,
+654,0,0,1,0,0,45,710,0,0,0,0,0,1,0,
+669,0,0,1,0,0,13,716,0,0,1,0,0,1,0,2,3,0,0,
+688,0,0,1,0,0,15,723,0,0,0,0,0,1,0,
+703,0,0,1,0,0,17,745,0,0,1,1,0,1,0,1,97,0,0,
+722,0,0,1,0,0,45,749,0,0,0,0,0,1,0,
+737,0,0,1,0,0,13,755,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,3,0,0,
+772,0,0,1,0,0,15,771,0,0,0,0,0,1,0,
 };
 
 
@@ -205,6 +211,8 @@ void change_state();
 void search_pro();
 void pc_exit();
 void pc_stop();
+int getPrice(char pro[10]);
+void buy_pro(char num[10], char number[10]);
 // win32 Visual C 2010 이상컴파일시 추가
 
 //-----------------------------------------
@@ -967,7 +975,7 @@ struct { unsigned short len; unsigned char arr[100]; } total;
 		
 
 		gotoxy(x,y);
-		printf("%s     %s    %s       %s       %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
+		printf("%s     %5s    %10s       %s       %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
 
 		y++;
 		count++;
@@ -1820,6 +1828,7 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 						gets_s(num, sizeof num);
 						gotoxy(54,20);
 						gets_s(number, sizeof number);
+						gogakMain(gogakID);
 					}
 				}
 			}
@@ -1829,16 +1838,10 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 			}
 			y = 11 ;
 			
-		}else{
-			gotoxy(34,20);
-			gets_s(num, sizeof num);
-			gotoxy(54,20);
-			gets_s(number, sizeof number);
 		}
-
-   	 }
-	
-
+		
+		
+   	 }	
     	/* Close the cursor. */
    	/* EXEC SQL CLOSE e_cursor; */ 
 
@@ -1879,11 +1882,266 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 }
 
 
+		gotoxy(34,20);
+		gets_s(num, sizeof num);
+		gotoxy(54,20);
+		gets_s(number, sizeof number);
+		if(num[0]!='\0' && number[0] !='\0'){
+			buy_pro(num, number);
+		}
 }
 
 /*---------------   음식 구매 함수 --------------------*/
-void buy_pro(){
+void buy_pro(char num[10], char number[10]){
+/* EXEC SQL BEGIN DECLARE SECTION; */ 
 
+
+	   char dynstmt[1000];
+
+  /* EXEC SQL END DECLARE SECTION; */ 
+
+	
+   int price = getPrice(num);
+   /* EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n"); */ 
+
+  
+  
+       	sprintf(dynstmt,"insert into sales values ((nvl2((select max(snum) from sales),(select max(snum)+1 from sales),1)),'%s','%s',default,to_number(%s))", num,  gogakID, number);
+       		
+			gotoxy(30,21);
+		      	printf("가격은 %d입니다.",price);
+
+		while(1){
+			gotoxy(30,22);
+			printf("구매 (y/n) >>");
+			char buy[20];
+			gets_s(buy,sizeof buy);
+			if(strcmp(buy,"y")==0 || strcmp(buy,"Y")==0){
+				/* EXEC SQL EXECUTE IMMEDIATE :dynstmt ; */ 
+
+{
+    struct sqlexd sqlstm;
+    sqlstm.sqlvsn = 13;
+    sqlstm.arrsiz = 6;
+    sqlstm.sqladtp = &sqladt;
+    sqlstm.sqltdsp = &sqltds;
+    sqlstm.stmt = "";
+    sqlstm.iters = (unsigned int  )1;
+    sqlstm.offset = (unsigned int  )601;
+    sqlstm.cud = sqlcud0;
+    sqlstm.sqlest = (unsigned char  *)&sqlca;
+    sqlstm.sqlety = (unsigned short)4352;
+    sqlstm.occurs = (unsigned int  )0;
+    sqlstm.sqhstv[0] = (         void  *)dynstmt;
+    sqlstm.sqhstl[0] = (unsigned int  )1000;
+    sqlstm.sqhsts[0] = (         int  )0;
+    sqlstm.sqindv[0] = (         void  *)0;
+    sqlstm.sqinds[0] = (         int  )0;
+    sqlstm.sqharm[0] = (unsigned int  )0;
+    sqlstm.sqadto[0] = (unsigned short )0;
+    sqlstm.sqtdso[0] = (unsigned short )0;
+    sqlstm.sqphsv = sqlstm.sqhstv;
+    sqlstm.sqphsl = sqlstm.sqhstl;
+    sqlstm.sqphss = sqlstm.sqhsts;
+    sqlstm.sqpind = sqlstm.sqindv;
+    sqlstm.sqpins = sqlstm.sqinds;
+    sqlstm.sqparm = sqlstm.sqharm;
+    sqlstm.sqparc = sqlstm.sqharc;
+    sqlstm.sqpadto = sqlstm.sqadto;
+    sqlstm.sqptdso = sqlstm.sqtdso;
+    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+    if (sqlca.sqlcode == 1403) break;
+    if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
+}
+
+
+		
+		       		/* EXEC SQL COMMIT WORK ; */ 
+
+{
+           struct sqlexd sqlstm;
+           sqlstm.sqlvsn = 13;
+           sqlstm.arrsiz = 6;
+           sqlstm.sqladtp = &sqladt;
+           sqlstm.sqltdsp = &sqltds;
+           sqlstm.iters = (unsigned int  )1;
+           sqlstm.offset = (unsigned int  )620;
+           sqlstm.cud = sqlcud0;
+           sqlstm.sqlest = (unsigned char  *)&sqlca;
+           sqlstm.sqlety = (unsigned short)4352;
+           sqlstm.occurs = (unsigned int  )0;
+           sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+           if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
+}
+
+ 
+				gotoxy(30,22);
+				printf("                      ");
+				gotoxy(30,22);
+				printf("구매를 하였습니다.");
+				break;
+			
+			} else if(strcmp(buy,"N")==0 || strcmp(buy,"N")==0){
+				printf("구매를 취소했습니다.");
+				break;
+			}else{
+				printf("잘못 입력했습니다.");
+			}
+		}
+			getch();
+}
+/*---------------   물품 가격 찾기 함수 --------------------*/
+int getPrice(char pro[10]){
+	/* EXEC SQL BEGIN DECLARE SECTION; */ 
+
+  	int pprice;
+    char dynstmt[1000];
+/* EXEC SQL END DECLARE SECTION; */ 
+
+    
+    
+    /* EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n"); */ 
+
+   
+    sprintf(dynstmt,"SELECT pprice  FROM product where pnum = '%s'", pro) ;
+
+
+    /* EXEC SQL PREPARE S FROM :dynstmt ; */ 
+
+{
+    struct sqlexd sqlstm;
+    sqlstm.sqlvsn = 13;
+    sqlstm.arrsiz = 6;
+    sqlstm.sqladtp = &sqladt;
+    sqlstm.sqltdsp = &sqltds;
+    sqlstm.stmt = "";
+    sqlstm.iters = (unsigned int  )1;
+    sqlstm.offset = (unsigned int  )635;
+    sqlstm.cud = sqlcud0;
+    sqlstm.sqlest = (unsigned char  *)&sqlca;
+    sqlstm.sqlety = (unsigned short)4352;
+    sqlstm.occurs = (unsigned int  )0;
+    sqlstm.sqhstv[0] = (         void  *)dynstmt;
+    sqlstm.sqhstl[0] = (unsigned int  )1000;
+    sqlstm.sqhsts[0] = (         int  )0;
+    sqlstm.sqindv[0] = (         void  *)0;
+    sqlstm.sqinds[0] = (         int  )0;
+    sqlstm.sqharm[0] = (unsigned int  )0;
+    sqlstm.sqadto[0] = (unsigned short )0;
+    sqlstm.sqtdso[0] = (unsigned short )0;
+    sqlstm.sqphsv = sqlstm.sqhstv;
+    sqlstm.sqphsl = sqlstm.sqhstl;
+    sqlstm.sqphss = sqlstm.sqhsts;
+    sqlstm.sqpind = sqlstm.sqindv;
+    sqlstm.sqpins = sqlstm.sqinds;
+    sqlstm.sqparm = sqlstm.sqharm;
+    sqlstm.sqparc = sqlstm.sqharc;
+    sqlstm.sqpadto = sqlstm.sqadto;
+    sqlstm.sqptdso = sqlstm.sqtdso;
+    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+    if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
+}
+
+
+
+    /* EXEC SQL DECLARE t_cursor CURSOR FOR S ; */ 
+ 
+
+    /* EXEC SQL OPEN t_cursor ; */ 
+
+{
+    struct sqlexd sqlstm;
+    sqlstm.sqlvsn = 13;
+    sqlstm.arrsiz = 6;
+    sqlstm.sqladtp = &sqladt;
+    sqlstm.sqltdsp = &sqltds;
+    sqlstm.stmt = "";
+    sqlstm.iters = (unsigned int  )1;
+    sqlstm.offset = (unsigned int  )654;
+    sqlstm.selerr = (unsigned short)1;
+    sqlstm.sqlpfmem = (unsigned int  )0;
+    sqlstm.cud = sqlcud0;
+    sqlstm.sqlest = (unsigned char  *)&sqlca;
+    sqlstm.sqlety = (unsigned short)4352;
+    sqlstm.occurs = (unsigned int  )0;
+    sqlstm.sqcmod = (unsigned int )0;
+    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+    if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
+}
+
+ 
+
+  
+    /* EXEC SQL WHENEVER NOT FOUND do break; */ 
+
+    for(;;)
+    {
+        /* EXEC SQL FETCH t_cursor INTO :pprice; */ 
+
+{
+        struct sqlexd sqlstm;
+        sqlstm.sqlvsn = 13;
+        sqlstm.arrsiz = 6;
+        sqlstm.sqladtp = &sqladt;
+        sqlstm.sqltdsp = &sqltds;
+        sqlstm.iters = (unsigned int  )1;
+        sqlstm.offset = (unsigned int  )669;
+        sqlstm.selerr = (unsigned short)1;
+        sqlstm.sqlpfmem = (unsigned int  )0;
+        sqlstm.cud = sqlcud0;
+        sqlstm.sqlest = (unsigned char  *)&sqlca;
+        sqlstm.sqlety = (unsigned short)4352;
+        sqlstm.occurs = (unsigned int  )0;
+        sqlstm.sqfoff = (           int )0;
+        sqlstm.sqfmod = (unsigned int )2;
+        sqlstm.sqhstv[0] = (         void  *)&pprice;
+        sqlstm.sqhstl[0] = (unsigned int  )sizeof(int);
+        sqlstm.sqhsts[0] = (         int  )0;
+        sqlstm.sqindv[0] = (         void  *)0;
+        sqlstm.sqinds[0] = (         int  )0;
+        sqlstm.sqharm[0] = (unsigned int  )0;
+        sqlstm.sqadto[0] = (unsigned short )0;
+        sqlstm.sqtdso[0] = (unsigned short )0;
+        sqlstm.sqphsv = sqlstm.sqhstv;
+        sqlstm.sqphsl = sqlstm.sqhstl;
+        sqlstm.sqphss = sqlstm.sqhsts;
+        sqlstm.sqpind = sqlstm.sqindv;
+        sqlstm.sqpins = sqlstm.sqinds;
+        sqlstm.sqparm = sqlstm.sqharm;
+        sqlstm.sqparc = sqlstm.sqharc;
+        sqlstm.sqpadto = sqlstm.sqadto;
+        sqlstm.sqptdso = sqlstm.sqtdso;
+        sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+        if (sqlca.sqlcode == 1403) break;
+        if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
+}
+
+
+
+	return pprice;
+    }
+	
+    
+
+    /* EXEC SQL CLOSE t_cursor; */ 
+
+{
+    struct sqlexd sqlstm;
+    sqlstm.sqlvsn = 13;
+    sqlstm.arrsiz = 6;
+    sqlstm.sqladtp = &sqladt;
+    sqlstm.sqltdsp = &sqltds;
+    sqlstm.iters = (unsigned int  )1;
+    sqlstm.offset = (unsigned int  )688;
+    sqlstm.cud = sqlcud0;
+    sqlstm.sqlest = (unsigned char  *)&sqlca;
+    sqlstm.sqlety = (unsigned short)4352;
+    sqlstm.occurs = (unsigned int  )0;
+    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+    if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
+}
+
+ 
 }
 
 /*---------------   회원 정보 찾기 함수 --------------------*/
@@ -1926,7 +2184,7 @@ struct { unsigned short len; unsigned char arr[20]; } v_phone;
     sqlstm.sqltdsp = &sqltds;
     sqlstm.stmt = "";
     sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )601;
+    sqlstm.offset = (unsigned int  )703;
     sqlstm.cud = sqlcud0;
     sqlstm.sqlest = (unsigned char  *)&sqlca;
     sqlstm.sqlety = (unsigned short)4352;
@@ -1967,7 +2225,7 @@ struct { unsigned short len; unsigned char arr[20]; } v_phone;
     sqlstm.sqltdsp = &sqltds;
     sqlstm.stmt = "";
     sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )620;
+    sqlstm.offset = (unsigned int  )722;
     sqlstm.selerr = (unsigned short)1;
     sqlstm.sqlpfmem = (unsigned int  )0;
     sqlstm.cud = sqlcud0;
@@ -1995,7 +2253,7 @@ struct { unsigned short len; unsigned char arr[20]; } v_phone;
         sqlstm.sqladtp = &sqladt;
         sqlstm.sqltdsp = &sqltds;
         sqlstm.iters = (unsigned int  )1;
-        sqlstm.offset = (unsigned int  )635;
+        sqlstm.offset = (unsigned int  )737;
         sqlstm.selerr = (unsigned short)1;
         sqlstm.sqlpfmem = (unsigned int  )0;
         sqlstm.cud = sqlcud0;
@@ -2083,7 +2341,7 @@ struct { unsigned short len; unsigned char arr[20]; } v_phone;
     sqlstm.sqladtp = &sqladt;
     sqlstm.sqltdsp = &sqltds;
     sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )670;
+    sqlstm.offset = (unsigned int  )772;
     sqlstm.cud = sqlcud0;
     sqlstm.sqlest = (unsigned char  *)&sqlca;
     sqlstm.sqlety = (unsigned short)4352;

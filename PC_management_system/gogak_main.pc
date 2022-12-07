@@ -28,6 +28,8 @@ void change_state();
 void search_pro();
 void pc_exit();
 void pc_stop();
+int getPrice(char pro[10]);
+void buy_pro(char num[10], char number[10]);
 // win32 Visual C 2010 이상컴파일시 추가
 
 //-----------------------------------------
@@ -338,7 +340,7 @@ void getBuyList(){
 		
 
 		gotoxy(x,y);
-		printf("%s     %s    %s       %s       %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
+		printf("%s     %5s    %10s       %s       %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
 
 		y++;
 		count++;
@@ -631,6 +633,13 @@ void search_pro(){
 			y = 11 ;
 			
 		}
+		
+		
+   	 }	
+    	/* Close the cursor. */
+   	EXEC SQL CLOSE e_cursor;
+
+   	EXEC SQL COMMIT ;
 		gotoxy(34,20);
 		gets_s(num, sizeof num);
 		gotoxy(54,20);
@@ -638,37 +647,80 @@ void search_pro(){
 		if(num[0]!='\0' && number[0] !='\0'){
 			buy_pro(num, number);
 		}
-   	 }
-	
-
-    	/* Close the cursor. */
-   	EXEC SQL CLOSE e_cursor;
-
-   	EXEC SQL COMMIT ;
 }
 
 /*---------------   음식 구매 함수 --------------------*/
 void buy_pro(char num[10], char number[10]){
-		EXEC SQL BEGIN DECLARE SECTION;
+EXEC SQL BEGIN DECLARE SECTION;
 
 	   char dynstmt[1000];
 
   EXEC SQL END DECLARE SECTION;
 	
-   char  upw[50];
-   char uphone[50];
-  
+   int price = getPrice(num);
    EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
   
   
-       	sprintf(dynstmt,"update gogak set gpw ='%s', phone='%s' where gid = '%s'", upw, uphone, gogakID);
-       			
-	gotoxy(35,20);
-      	printf("변경이 완료되습니다! ");
-			getch();
-			EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
+       	sprintf(dynstmt,"insert into sales values ((nvl2((select max(snum) from sales),(select max(snum)+1 from sales),1)),'%s','%s',default,to_number(%s))", num,  gogakID, number);
+       		
+			gotoxy(30,21);
+		      	printf("가격은 %d입니다.",price);
+
+		while(1){
+			gotoxy(30,22);
+			printf("구매 (y/n) >>");
+			char buy[20];
+			gets_s(buy,sizeof buy);
+			if(strcmp(buy,"y")==0 || strcmp(buy,"Y")==0){
+				EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
+		
+		       		EXEC SQL COMMIT WORK ; 
+				gotoxy(30,22);
+				printf("                      ");
+				gotoxy(30,22);
+				printf("구매를 하였습니다.");
+				break;
 			
-		       	EXEC SQL COMMIT WORK ; 
+			} else if(strcmp(buy,"N")==0 || strcmp(buy,"N")==0){
+				printf("구매를 취소했습니다.");
+				break;
+			}else{
+				printf("잘못 입력했습니다.");
+			}
+		}
+			getch();
+}
+/*---------------   물품 가격 찾기 함수 --------------------*/
+int getPrice(char pro[10]){
+	EXEC SQL BEGIN DECLARE SECTION;
+  	int pprice;
+    char dynstmt[1000];
+EXEC SQL END DECLARE SECTION;
+    
+    
+    EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+   
+    sprintf(dynstmt,"SELECT pprice  FROM product where pnum = '%s'", pro) ;
+
+
+    EXEC SQL PREPARE S FROM :dynstmt ;
+
+    EXEC SQL DECLARE t_cursor CURSOR FOR S ; 
+
+    EXEC SQL OPEN t_cursor ; 
+
+  
+    EXEC SQL WHENEVER NOT FOUND do break;
+    for(;;)
+    {
+        EXEC SQL FETCH t_cursor INTO :pprice;
+
+	return pprice;
+    }
+	
+    
+
+    EXEC SQL CLOSE t_cursor; 
 }
 
 /*---------------   회원 정보 찾기 함수 --------------------*/
