@@ -1,0 +1,61 @@
+// 마지막고침 : 2020.11.17
+// win32 Visual C 2010 이상컴파일시 추가
+// 프로그램 가장 첫 줄에 추가할 것
+#define _CRT_SECURE_NO_WARNINGS
+//-----------------------------------------
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <conio.h>
+#include "header.h"
+
+/* for oracle */
+#include <sqlda.h>
+#include <sqlca.h>
+#include <sqlcpr.h>
+void empMain();
+
+// win32 Visual C 2010 이상컴파일시 추가
+#define getch() _getch()
+//-----------------------------------------
+
+//#ifdef WIN32
+#include < windows.h >
+
+#define getch() _getch()
+
+
+/*---------------   프로그램 시작 함수 --------------------*/
+void empMain(){
+	char emp_select[10] = {NULL, };
+	
+	while(1){
+		clrscr();
+		print_screen("empMain.txt");
+		gotoxy(32,17);
+		gets_s(emp_select, sizeof emp_select);
+		if( strcmp(emp_select,"1") == 0){
+			printf("%s", emp_select);
+		}else if (strcmp(emp_select,"2") == 0){
+			printf("%s", emp_select);
+		}else if (strcmp(emp_select,"3") == 0){
+			printf("%s", emp_select);
+		}else if (strcmp(emp_select,"4") == 0){
+			printf("%s", emp_select);
+		}else if (strcmp(emp_select,"5") == 0){
+			printf("%s", emp_select);
+		}else if(strcmp(emp_select,"exit") == 0){
+			break;
+		}else{
+			gotoxy(25,18); // 잘 못 입력 되었다는 것을 알리기
+			printf("잘못된 입력입니다. 다시 입력해주세요");
+			getch();
+		}
+		
+	}
+
+}
+
+

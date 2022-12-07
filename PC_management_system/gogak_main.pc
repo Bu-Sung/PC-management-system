@@ -1,0 +1,723 @@
+// 마지막고침 : 2020.11.17
+// win32 Visual C 2010 이상컴파일시 추가
+// 프로그램 가장 첫 줄에 추가할 것
+#define _CRT_SECURE_NO_WARNINGS
+//-----------------------------------------
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <conio.h>
+#include "header.h"
+
+/* for oracle */
+#include <sqlda.h>
+#include <sqlca.h>
+#include <sqlcpr.h>
+
+void gogakMain(char str_id[20]);
+void gogakUsgin();
+void gogakDelete();
+void gogakUpdate();
+void Select_tuple(char *no);
+void getBuyList();
+void pc_start(char str_id[20]);
+void insert_use(int select);
+void change_state();
+void search_pro();
+void pc_exit();
+void pc_stop();
+// win32 Visual C 2010 이상컴파일시 추가
+
+//-----------------------------------------
+
+//#ifdef WIN32
+#include < windows.h >
+
+#define getch() _getch()
+char gogakID[20];
+char gogakNAME[10];
+char gogakPW[20];
+char gogakPHONE[20];
+int gogakUSING;
+
+/*---------------   고객 메인 시작 함수 --------------------*/
+void gogakMain(char str_id[20]){
+	Select_tuple(str_id);
+	char gogak_select[10] = {NULL, };
+
+	while(1){
+		clrscr();
+		print_screen("gogakMain.txt");
+		gotoxy(16,4);
+		printf("%s", gogakNAME);
+		gotoxy(36,17);
+		gets_s(gogak_select, sizeof gogak_select);
+		if( strcmp(gogak_select,"1") == 0){
+			search_pro();
+		}else if (strcmp(gogak_select,"2") == 0){
+			pc_stop();
+		}else if (strcmp(gogak_select,"3") == 0){
+			char update_select[10]={NULL,};
+			while(1){
+				gotoxy(28,18);
+				printf("1. 수정 2. 삭제 0. 취소 >> "); 
+				gets_s(update_select, sizeof update_select);
+				if(strcmp(update_select,"1") == 0){
+					gogakUpdate();
+					break;
+				}else if(strcmp(update_select,"2") == 0){
+					gogakDelete();
+					break;
+				}else if(strcmp(update_select,"0") == 0){
+					break;
+				}else{	
+					gotoxy(50,19);
+					printf("잘 못 입력하였습니다");
+					getch();
+					gotoxy(50,19);
+					printf("                             ");
+					gotoxy(55,18);
+					printf("                 ");
+				}
+			}
+		}else if (strcmp(gogak_select,"4") == 0){
+			gogakUsgin();
+		}else if (strcmp(gogak_select,"5") == 0){
+			getBuyList();
+		}else if(strcmp(gogak_select,"exit") == 0){
+			break;
+		}else{
+			gotoxy(25,18); // 잘 못 입력 되었다는 것을 알리기
+			printf("잘못된 입력입니다. 다시 입력해주세요");
+			getch();
+		}
+		
+	}
+
+}
+
+/*---------------   본인 사용 기록 조회 함수 --------------------*/
+
+void gogakUsgin(){
+	clrscr();
+	print_screen("myUsing.txt");
+	int key;
+	int x,y,count=0, page=0;
+	EXEC SQL BEGIN DECLARE SECTION;
+   		varchar hnum[100];
+  		varchar seat[100];
+		varchar day[100];
+		varchar stime[100];
+		varchar etime[100];	
+
+  		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
+	
+	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+
+	/* 실행시킬 SQL 문장*/
+   	sprintf(dynstmt,"select to_char(hnum) as hnum, to_char(seat) as seat, to_char(stime, 'YYYY-MM-DD')  as day, to_char(stime, 'HH24:MI') as stime , nvl2(etime, to_char(stime, 'HH24:MI'),to_char('사용 중')) as etime from use_history where gid='%s' order by hnum desc",gogakID); 
+
+	EXEC SQL PREPARE S FROM :dynstmt ;
+
+	/* cursor 선언 */
+	EXEC SQL DECLARE b_cursor CURSOR FOR S ; 
+	
+	/* cursor open */
+	EXEC SQL OPEN b_cursor ; 
+
+	EXEC SQL WHENEVER NOT FOUND DO break;
+
+	x = 8;
+  	y = 11 ;
+  	for (;;){
+		EXEC SQL FETCH b_cursor INTO :hnum, :seat, :day, :stime, :etime;
+		
+		hnum.arr[hnum.len] = '\0' ;
+		seat.arr[seat.len] = '\0';
+		day.arr[day.len] = '\0' ;
+		stime.arr[stime.len] = '\0';
+		etime.arr[etime.len] = '\0' ;
+
+		gotoxy(x,y);
+		printf("   %4s     %5s      %-11s       %-8s    %-10s", hnum.arr, seat.arr,day.arr,stime.arr,etime.arr);
+
+		y++;
+		count++;
+		
+		if( count == 5){
+			count = 0;
+			while(1){
+			if (_kbhit()) {       
+           				key = getch();   
+           				 if (key == -32) {    
+               			 	key = getch();
+					if(key==77){
+						break;
+					}
+				}
+			}
+			}
+			gotoxy(8,11); //이전 화면 부분 클리어	
+	            	  	for(int i= 0; i < 5; i++){
+				printf("                                                                                             \n");
+			}
+			y = 11 ;
+		}
+
+   	 }
+	gotoxy(71,18);
+    	printf("(END)");
+	getch();
+
+    	/* Close the cursor. */
+   	EXEC SQL CLOSE b_cursor;
+
+   	EXEC SQL COMMIT ;
+}
+
+/*---------------   회원 탈퇴 함수 --------------------*/
+void gogakDelete(){
+
+	EXEC SQL BEGIN DECLARE SECTION;
+
+	   char dynstmt[1000];
+
+	EXEC SQL END DECLARE SECTION;
+	
+	
+	char  flag[10];
+
+   	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	
+	while(1){
+		gotoxy(23,20);
+		printf("정말 회원을 탈퇴하겠습니까?? (y/n) >> ");   
+		gets_s(flag, sizeof flag);
+   		if( strcmp(flag,"y") == 0|| strcmp(flag,"Y") == 0 ){
+       			sprintf(dynstmt,"delete from gogak where gid = '%s' ", gogakID);
+       			gotoxy(31,21);
+      		 	
+			EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
+			
+		       	EXEC SQL COMMIT WORK ; 
+			printf("탈퇴를 완료했습니다..\n");
+			getch();
+			start();
+			
+		   }
+   		else {
+			gotoxy(31,21);
+      		 	printf("탈퇴를 취소했습니다.");
+			getch();
+   		}
+		gotoxy(23,20);
+   		printf("                                                          ");   
+		gotoxy(31,21);
+     	 	printf("                                                           ");
+		break;
+	}
+}
+
+/*---------------   회원 정보 변경 함수 --------------------*/
+void gogakUpdate(){
+	EXEC SQL BEGIN DECLARE SECTION;
+
+	   char dynstmt[1000];
+
+  EXEC SQL END DECLARE SECTION;
+	
+   char  upw[50];
+   char uphone[50];
+  
+   EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+  
+  
+	clrscr();
+	print_screen("gogakUpdate.txt");
+	
+while(1){
+     
+  gotoxy(35,9);
+  printf("%s", gogakID);
+  
+  gotoxy(35, 11);
+  printf("%s", gogakNAME);
+
+   gotoxy(35,13);
+  gets_s(upw, sizeof upw);
+   if(upw[0] == '\0' ) {
+       gotoxy(35,13);
+       strcpy(upw, gogakPW);
+        printf("%s\n", gogakPW );
+   }
+
+   gotoxy(35,15);
+   gets_s(uphone, sizeof uphone);
+   if(uphone[0] == '\0' ) {
+       gotoxy(35,15);
+       printf("%s\n", gogakPHONE );
+       strcpy(uphone, gogakPHONE);
+   }
+   
+   gotoxy(26,19);
+   printf("정말로 변경하시겠습니까? (y/n) >> ");
+   char flag = (char*) getch();
+   if( flag == 'y' || flag =='Y' ){
+       			sprintf(dynstmt,"update gogak set gpw ='%s', phone='%s' where gid = '%s'", upw, uphone, gogakID);
+       			
+			gotoxy(35,20);
+      		 	printf("변경이 완료되습니다! ");
+			getch();
+			EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
+			
+		       	EXEC SQL COMMIT WORK ; 
+			break;
+			
+		   }
+   		else {
+			gotoxy(35,20);
+      		 	printf("변경을 취소했습니다.");
+			getch();
+			break;
+   		}
+		gotoxy(29,19);
+   		printf("                                                          ");   
+		gotoxy(35,20);
+     	 	printf("                                                           ");
+	
+   
+ }
+
+}
+/*---------------   구매이력 조회 함수 --------------------*/
+void getBuyList(){
+	clrscr();
+	print_screen("myBuy.txt");
+	
+	int x,y,count=0, page=0;
+	EXEC SQL BEGIN DECLARE SECTION;
+   		varchar snum[100];
+		varchar pname[100];
+		varchar date[100];
+		varchar samount[100];
+		varchar pprice[100];
+		varchar total[100];	
+
+  		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
+	
+	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+
+	/* 실행시킬 SQL 문장*/
+   	sprintf(dynstmt,"select to_char(s.snum), to_char(p.pname), to_char(s.sales_date, 'YY-MM-DD HH24:MI'), to_char(s.samount),to_char(p.pprice) ,to_char(s.samount*p.pprice) from gogak g join sales s  on g.gid = s.gid join product p on s.pnum = p.pnum where g.gid = '%s' order by s.snum desc", gogakID); 
+
+	EXEC SQL PREPARE S FROM :dynstmt ;
+
+	/* cursor 선언 */
+	EXEC SQL DECLARE a_cursor CURSOR FOR S ; 
+	
+	/* cursor open */
+	EXEC SQL OPEN a_cursor ; 
+
+	EXEC SQL WHENEVER NOT FOUND DO break;
+
+	x = 11;
+  	y = 11 ;
+  	for (;;){
+		EXEC SQL FETCH a_cursor INTO :snum, :pname, :date, :samount, :pprice, :total;
+		
+		snum.arr[snum.len] = '\0' ;
+		pname.arr[pname.len] = '\0' ;
+		date.arr[date.len] = '\0';
+		samount.arr[samount.len] = '\0' ;
+		pprice.arr[pprice.len] = '\0' ;
+		total.arr[total.len] = '\0' ;
+		
+
+		gotoxy(x,y);
+		printf("%s     %s    %s       %s       %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
+
+		y++;
+		count++;
+		
+		if( count == 5){
+			count = 0;
+			getch();
+			gotoxy(8,11); //이전 화면 부분 클리어	
+	            	  	for(int i= 0; i < 5; i++){
+				printf("                                                                                             \n");
+			}
+			y = 11 ;
+		}
+
+   	 }
+	gotoxy(71,18);
+    	printf("(END)");
+	getch();
+
+    	/* Close the cursor. */
+   	EXEC SQL CLOSE a_cursor;
+
+   	EXEC SQL COMMIT ;
+}
+
+/*---------------   PC 사용 확인 함수 --------------------*/
+void pc_start(char str_id[20]){
+	Select_tuple(str_id);
+	clrscr();
+	print_screen("useState.txt");
+		
+	EXEC SQL BEGIN DECLARE SECTION;
+   		 int  v_seat;
+   		 varchar  v_name[20];
+	
+    		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
+    
+	
+    
+    EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+   
+    sprintf(dynstmt,"select u.seat, g.gname from use_history u join gogak g on u.gid = g.gid where etime is Null") ;
+	
+    EXEC SQL PREPARE S FROM :dynstmt ;
+
+    EXEC SQL DECLARE d_cursor CURSOR FOR S ; 
+
+    EXEC SQL OPEN d_cursor ; 
+
+  
+    EXEC SQL WHENEVER NOT FOUND do break;
+	char arr[SEAT];
+	for(int i=0; i<SEAT;i++){
+		arr[i]='y';
+	}
+    for(;;)
+    {
+        EXEC SQL FETCH d_cursor INTO :v_seat, :v_name;
+	int x=0, y=0;
+	
+	v_name.arr[v_name.len] = '\0';
+	if( v_seat > 5 ){
+		y = 15;
+		x = ((v_seat-5)*5) + ((v_seat-6)*11);
+	}else{
+		y =10;
+		x = (v_seat*5) + ((v_seat-1)*11);
+	}
+	
+	arr[v_seat-1] = 'n';
+	gotoxy(x,y);
+	printf("%s",v_name.arr);
+    }	
+	
+    EXEC SQL CLOSE d_cursor; 
+	
+   /*---------------   좌석 예약하기 --------------------*/
+	char seat_select[SEAT];	
+	while(1){
+		gotoxy(22,18);
+		printf("예약하실 좌석을 선택해 주세요 >> ");
+		gets_s(seat_select,sizeof seat_select);
+		
+		if(strcmp(seat_select,"exit")==0 || strcmp(seat_select,"EXIT")==0){
+			break;
+		}
+		if((seat_select[1]=='\0' && strcmp(seat_select,"[0-9]")) || strcmp(seat_select, "10") == 0) {
+			int seat = seat_select[0] - 48;
+			if(arr[seat-1] == 'y'){
+				insert_use(seat);
+				gotoxy(27,20);
+				printf("예약이 완료되었습니다.");
+				getch();
+				break;
+			}else if(arr[seat-1] == 'n'){
+				gotoxy(26,20);
+				printf("이미 예약된 좌석입니다..");
+				getch();
+			}
+		}else{
+			gotoxy(26,19);
+			printf("잘 못 입력하셨습니다..");
+			getch();
+		
+		}
+		gotoxy(26,19);
+		printf("                                                    ");
+		gotoxy(26,20);
+		printf("                                           ");
+		gotoxy(22,18);
+		printf("                                                            ");
+	}	
+
+}
+/*---------------   좌석 예약 함수 --------------------*/
+void insert_use(int select){	
+EXEC SQL BEGIN DECLARE SECTION;
+    		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
+
+
+ 	/* Register sql_error() as the error handler. */
+	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+
+	sprintf(dynstmt,"insert into use_history values (nvl2((select max(hnum) from use_history),(select max(hnum)+1 from use_history),1), %d, '%s', default, default)",select  ,gogakID );
+	
+	   /* 실행시킬 SQL 문장*/
+	while(1){
+		EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
+		break;
+	}
+	EXEC SQL COMMIT WORK ;
+	
+	
+}
+
+/*---------------   PC 사용 중지 함수 --------------------*/
+void pc_stop(){
+	EXEC SQL BEGIN DECLARE SECTION;
+   		varchar stime[100];
+		int usingtime;
+		int total;
+
+  		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
+	
+	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+
+	/* 실행시킬 SQL 문장*/
+   	sprintf(dynstmt,"select to_char(stime, 'YY-MM-DD HH24:MI'), round(to_number(sysdate-stime)*24*60), round((to_number(sysdate-stime)*24*60*100)/100)*100 from use_history where gid='%s' and etime is NULL", gogakID); 
+
+	EXEC SQL PREPARE S FROM :dynstmt ;
+
+	/* cursor 선언 */
+	EXEC SQL DECLARE f_cursor CURSOR FOR S ; 
+	
+	/* cursor open */
+	EXEC SQL OPEN f_cursor ; 
+
+	EXEC SQL WHENEVER NOT FOUND DO break;
+
+  	for (;;){
+		EXEC SQL FETCH f_cursor INTO :stime, :usingtime, :total;
+		
+		stime.arr[stime.len] = '\0' ;
+
+		gotoxy(26,18);
+		printf("시작 시간 : %s", stime.arr);
+		
+		gotoxy(26,19);
+		printf("사용 시간 : %d", usingtime);
+		
+		gotoxy(26,20);
+		printf("결제 가격 : %d", total);
+		
+		gotoxy(26,21);
+		while(1){
+			printf("종료하시겠습니까? (y/n)>>");
+			char asd[10];
+			gets_s(asd, sizeof asd);
+			if(strcmp(asd,"y")==0 || strcmp(asd,"Y")==0){
+				pc_exit();
+				start();
+				break;
+			} else if(strcmp(asd,"N")==0 || strcmp(asd,"N")==0){
+				break;
+			}else{
+				printf("잘못 입력했습니다.");
+			}
+		}
+   	 }
+
+    	/* Close the cursor. */
+   	EXEC SQL CLOSE f_cursor;
+
+   	EXEC SQL COMMIT ;	
+}
+/*---------------   종료 함수 --------------------*/
+void pc_exit(){
+	EXEC SQL BEGIN DECLARE SECTION;
+  		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
+	
+	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+		sprintf(dynstmt,"update use_history set etime =systimestamp where gid ='%s'",  gogakID);
+       			
+			
+				while(1){
+			EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
+			break;
+			}
+			gotoxy(32,22);
+      		 	printf("감사합니다!! ");
+			getch();
+			
+		       	EXEC SQL COMMIT WORK ; 
+}
+
+/*---------------   음식 찾기 함수 --------------------*/
+void search_pro(){
+              clrscr();
+	print_screen("buy_pro.txt");
+	int key;
+	int x,y,count=0, page=0;
+	EXEC SQL BEGIN DECLARE SECTION;
+		varchar pnum[100];
+		varchar pname[100];
+		int pamount;
+		int pprice;
+	
+  		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
+	
+	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+
+	/* 실행시킬 SQL 문장*/
+   	sprintf(dynstmt,"select * from product"); 
+
+	EXEC SQL PREPARE S FROM :dynstmt ;
+
+	/* cursor 선언 */
+	EXEC SQL DECLARE e_cursor CURSOR FOR S ; 
+	
+	/* cursor open */
+	EXEC SQL OPEN e_cursor ; 
+
+	EXEC SQL WHENEVER NOT FOUND DO break;
+
+	x = 18;
+  	y = 10 ;
+	char num[10];
+	char number[10];
+  	for (;;){
+		EXEC SQL FETCH e_cursor INTO :pnum, :pname, :pamount, :pprice;
+		
+		pnum.arr[pnum.len] = '\0' ;
+		pname.arr[pname.len] = '\0' ;
+		
+
+		gotoxy(x,y);
+		printf("%s   %15s            %d          %d", pnum.arr, pname.arr, pprice,pamount);
+
+		y++;
+		count++;
+		
+		if( count == 5){
+			count = 0;
+			while(1){
+				if (_kbhit()) {       
+           					key = getch();   
+           					 if (key == -32) {    
+               				 	key = getch();
+						if(key==77){
+							break;
+						}
+					}else if(key == 13){
+						gotoxy(34,20);
+						gets_s(num, sizeof num);
+						gotoxy(54,20);
+						gets_s(number, sizeof number);
+						gogakMain(gogakID);
+					}
+				}
+			}
+			gotoxy(18,11); //이전 화면 부분 클리어	
+	            	  	for(int i= 0; i < 5; i++){
+				printf("                                                                                             \n");
+			}
+			y = 11 ;
+			
+		}
+		gotoxy(34,20);
+		gets_s(num, sizeof num);
+		gotoxy(54,20);
+		gets_s(number, sizeof number);
+		if(num[0]!='\0' && number[0] !='\0'){
+			buy_pro(num, number);
+		}
+   	 }
+	
+
+    	/* Close the cursor. */
+   	EXEC SQL CLOSE e_cursor;
+
+   	EXEC SQL COMMIT ;
+}
+
+/*---------------   음식 구매 함수 --------------------*/
+void buy_pro(char num[10], char number[10]){
+		EXEC SQL BEGIN DECLARE SECTION;
+
+	   char dynstmt[1000];
+
+  EXEC SQL END DECLARE SECTION;
+	
+   char  upw[50];
+   char uphone[50];
+  
+   EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+  
+  
+       	sprintf(dynstmt,"update gogak set gpw ='%s', phone='%s' where gid = '%s'", upw, uphone, gogakID);
+       			
+	gotoxy(35,20);
+      	printf("변경이 완료되습니다! ");
+			getch();
+			EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
+			
+		       	EXEC SQL COMMIT WORK ; 
+}
+
+/*---------------   회원 정보 찾기 함수 --------------------*/
+void Select_tuple(char *no)
+{
+EXEC SQL BEGIN DECLARE SECTION;
+    varchar  v_id[20];
+    varchar  v_name[20];
+    varchar  v_pw[20];
+    varchar v_phone[20];
+    int v_using;
+
+    char dynstmt[1000];
+EXEC SQL END DECLARE SECTION;
+    
+    
+    EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+   
+    sprintf(dynstmt,"SELECT gid, gpw, gname, phone,pc_using  FROM gogak where gid = '%s'", no) ;
+	printf("%s",dynstmt);
+
+    EXEC SQL PREPARE S FROM :dynstmt ;
+
+    EXEC SQL DECLARE c_cursor CURSOR FOR S ; 
+
+    EXEC SQL OPEN c_cursor ; 
+
+  
+    EXEC SQL WHENEVER NOT FOUND do break;
+    for(;;)
+    {
+        EXEC SQL FETCH c_cursor INTO :v_id, :v_pw, :v_name, :v_phone, :v_using ;
+
+	    v_id.arr[v_id.len] = '\0';
+	    v_pw.arr[v_pw.len] = '\0';
+	    v_name.arr[v_name.len] = '\0';
+	    v_phone.arr[v_phone.len] = '\0';
+	    strcpy(gogakID, v_id.arr);
+	    strcpy(gogakPW, v_pw.arr);
+	    strcpy(gogakNAME, v_name.arr);
+             	    strcpy(gogakPHONE, v_phone.arr);
+      	    gogakUSING = v_using;
+
+    }
+	
+    
+
+    EXEC SQL CLOSE c_cursor; 
+   
+
+}
+
