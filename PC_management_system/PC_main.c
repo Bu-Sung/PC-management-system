@@ -143,7 +143,7 @@ static const short sqlcud0[] =
 108,0,0,3,0,0,13,152,0,0,3,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,
 135,0,0,4,0,0,24,250,0,0,1,1,0,1,0,1,97,0,0,
 154,0,0,5,0,0,29,252,0,0,0,0,0,1,0,
-169,0,0,6,0,0,31,311,0,0,0,0,0,1,0,
+169,0,0,6,0,0,31,317,0,0,0,0,0,1,0,
 };
 
 
@@ -184,7 +184,7 @@ void DB_connect();
 void login();
 void signUp();
 void start();
-void sql_error();
+int sql_error();
 
 /* EXEC SQL BEGIN DECLARE SECTION; */ 
 
@@ -743,20 +743,26 @@ int sql_error()
 
    errrpt prints the ORACLE error msg and number.
 -------------------------------------------------------------------------- */
-void sql_error(char *msg)
+int sql_error(char *msg)
 {
     char err_msg[128];
     size_t buf_len, msg_len;
-
+	
     /* EXEC SQL WHENEVER SQLERROR CONTINUE; */ 
 
-
-    printf("\n%s\n", msg);
-    buf_len = sizeof (err_msg);
-    sqlglm(err_msg, &buf_len, &msg_len);
-    printf("%.*s\n", msg_len, err_msg);
-
+	  buf_len = sizeof (err_msg);
+		    sqlglm(err_msg, &buf_len, &msg_len);
+	if(strstr(err_msg,"ORA-20003") != NULL){
+		gotoxy(30,22);
+		printf("재고가 부족합니다!!");
+		getch();
+		return 1;
+	}
+	else{  
+		    printf("%.*s\n", msg_len, err_msg);
+	}
     getch();
+   return 0;
     /* EXEC SQL ROLLBACK WORK; */ 
 
 {

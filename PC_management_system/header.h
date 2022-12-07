@@ -10,7 +10,7 @@ void DB_connect();
 void login();
 void signUp();
 void start();
-void sql_error();
+int sql_error();
 void pc_start(char str_id[20]);
 void clrscr(void);
 void pc_start();

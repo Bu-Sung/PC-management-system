@@ -512,13 +512,13 @@ void pc_stop(){
 		printf("시작 시간 : %s", stime.arr);
 		
 		gotoxy(26,19);
-		printf("사용 시간 : %d", usingtime);
+		printf("사용 시간 : %d 시간 %d 분", usingtime/60, usingtime%60);
 		
 		gotoxy(26,20);
-		printf("결제 가격 : %d", total);
-		
-		gotoxy(26,21);
+		printf("결제 가격 : %d 원", total);
+			
 		while(1){
+			gotoxy(26,21);
 			printf("종료하시겠습니까? (y/n)>>");
 			char asd[10];
 			gets_s(asd, sizeof asd);
@@ -526,11 +526,20 @@ void pc_stop(){
 				pc_exit();
 				start();
 				break;
-			} else if(strcmp(asd,"N")==0 || strcmp(asd,"N")==0){
+			} else if(strcmp(asd,"n")==0 || strcmp(asd,"N")==0){
+				gotoxy(31,22);
+				printf("취소합니다.");
+				getch();
 				break;
 			}else{
+				gotoxy(31,22);
 				printf("잘못 입력했습니다.");
+				getch();
 			}
+			gotoxy(31,22);
+			printf("                                        ");
+			gotoxy(26,21);
+			printf("                                                     ");
 		}
    	 }
 
@@ -564,8 +573,7 @@ void pc_exit(){
 void search_pro(){
               clrscr();
 	print_screen("buy_pro.txt");
-	int key;
-	int x,y,count=0, page=0;
+	int x,y,count=0, page=1;
 	EXEC SQL BEGIN DECLARE SECTION;
 		varchar pnum[100];
 		varchar pname[100];
@@ -578,7 +586,7 @@ void search_pro(){
 	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
 
 	/* 실행시킬 SQL 문장*/
-   	sprintf(dynstmt,"select * from product"); 
+   	sprintf(dynstmt,"select * from product order by pnum asc"); 
 
 	EXEC SQL PREPARE S FROM :dynstmt ;
 
@@ -603,50 +611,67 @@ void search_pro(){
 
 		gotoxy(x,y);
 		printf("%s   %15s            %d          %d", pnum.arr, pname.arr, pprice,pamount);
-
+		
 		y++;
 		count++;
-		
+		gotoxy(40,16);
+		printf("%d",page);
 		if( count == 5){
+			page++;
 			count = 0;
-			while(1){
-				if (_kbhit()) {       
-           					key = getch();   
-           					 if (key == -32) {    
-               				 	key = getch();
-						if(key==77){
+			char c;
+   			 while (1) {
+        				if (_kbhit()) {             
+           					 c = _getch();        
+          					  if (c == -32) {       
+              						  c = _getch();   
+						  if(c==77){
 							break;
-						}
-					}else if(key == 13){
+	 					}
+                
+           					 }else if(c==13){
 						gotoxy(34,20);
 						gets_s(num, sizeof num);
 						gotoxy(54,20);
 						gets_s(number, sizeof number);
-						gogakMain(gogakID);
+						if(num[0]!='\0' && number[0] !='\0'){
+							buy_pro(num, number);
+						}else{
+							gotoxy(32,21);
+							printf("구매를 종료합니다.");
+							getch();
+							gogakMain(gogakID);
+
+						}
 					}
-				}
-			}
-			gotoxy(18,11); //이전 화면 부분 클리어	
-	            	  	for(int i= 0; i < 5; i++){
-				printf("                                                                                             \n");
-			}
-			y = 11 ;
+       			 }
+   		 }
+		gotoxy(18,11); //이전 화면 부분 클리어	
+	            	for(int i= 0; i < 5; i++){
+			printf("                                                                                             \n");
+		}
+		y = 10 ;
 			
 		}
 		
 		
    	 }	
-    	/* Close the cursor. */
-   	EXEC SQL CLOSE e_cursor;
-
-   	EXEC SQL COMMIT ;
 		gotoxy(34,20);
 		gets_s(num, sizeof num);
 		gotoxy(54,20);
 		gets_s(number, sizeof number);
 		if(num[0]!='\0' && number[0] !='\0'){
 			buy_pro(num, number);
+		}else{
+			gotoxy(32,21);
+			printf("구매를 종료합니다.");
+			getch();
 		}
+    	/* Close the cursor. */
+   	EXEC SQL CLOSE e_cursor;
+
+   	EXEC SQL COMMIT ;
+		
 }
 
 /*---------------   음식 구매 함수 --------------------*/
@@ -656,15 +681,16 @@ EXEC SQL BEGIN DECLARE SECTION;
 	   char dynstmt[1000];
 
   EXEC SQL END DECLARE SECTION;
-	
+	int co = atoi(number);
    int price = getPrice(num);
-   EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	int fail;
+   EXEC SQL WHENEVER SQLERROR DO fail = sql_error("\7ORACLE ERROR:\n");
   
   
        	sprintf(dynstmt,"insert into sales values ((nvl2((select max(snum) from sales),(select max(snum)+1 from sales),1)),'%s','%s',default,to_number(%s))", num,  gogakID, number);
        		
 			gotoxy(30,21);
-		      	printf("가격은 %d입니다.",price);
+		      	printf("가격은 %d입니다.",price*co);
 
 		while(1){
 			gotoxy(30,22);
@@ -673,22 +699,31 @@ EXEC SQL BEGIN DECLARE SECTION;
 			gets_s(buy,sizeof buy);
 			if(strcmp(buy,"y")==0 || strcmp(buy,"Y")==0){
 				EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
-		
+				if(fail==1){
+					gogakMain(gogakID);	
+				}
 		       		EXEC SQL COMMIT WORK ; 
 				gotoxy(30,22);
 				printf("                      ");
 				gotoxy(30,22);
 				printf("구매를 하였습니다.");
-				break;
+				getch();
+				gogakMain(gogakID);
 			
 			} else if(strcmp(buy,"N")==0 || strcmp(buy,"N")==0){
+				gotoxy(30,22);
 				printf("구매를 취소했습니다.");
-				break;
+				getch();
+				gogakMain(gogakID);
 			}else{
+				gotoxy(30,23);
 				printf("잘못 입력했습니다.");
+				getch();
+				gotoxy(30,23);
+				printf("                                ");
 			}
 		}
-			getch();
+			
 }
 /*---------------   물품 가격 찾기 함수 --------------------*/
 int getPrice(char pro[10]){
@@ -709,18 +744,19 @@ EXEC SQL END DECLARE SECTION;
 
     EXEC SQL OPEN t_cursor ; 
 
-  
+  int price;
     EXEC SQL WHENEVER NOT FOUND do break;
     for(;;)
     {
         EXEC SQL FETCH t_cursor INTO :pprice;
 
-	return pprice;
+	price = pprice;
     }
 	
     
 
     EXEC SQL CLOSE t_cursor; 
+	return price;
 }
 
 /*---------------   회원 정보 찾기 함수 --------------------*/
