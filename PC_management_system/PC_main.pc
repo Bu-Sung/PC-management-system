@@ -176,7 +176,7 @@ EXEC SQL END DECLARE SECTION;
 					id.arr[id.len] = '\0' ;
 					pw.arr[pw.len] = '\0';
 					if(id.arr[0]=='\0'){
-						co==0;
+						co=0;
 					}					
 					if(strcmp(pw_temp,pw.arr)==0){
 						gotoxy(28,16);
@@ -188,7 +188,7 @@ EXEC SQL END DECLARE SECTION;
 						}else{
 							gogakMain(id.arr);
 						}
-						break;
+						return;
 
 					}else{
 						gotoxy(29,16);
@@ -233,27 +233,39 @@ void signUp(){
 	while(1){
 		gotoxy(35,9);
 		gets_s(id,sizeof id);
+
+		gotoxy(35, 11);
+		gets_s(pw,sizeof pw);
+
+		gotoxy(35,13);
+		gets_s(name,sizeof name);
+
+		gotoxy(35,15);
+		gets_s(phone,sizeof phone);
+		
 		if(id[0]=='*'){
 			gotoxy(22,22);
-			printf("*는 첫번째 자리에 사용이 불가합니다.");
-			gotoxy(35,9);
-			printf("                          ");
-		}else{
+			printf("*는 첫번째 자리에 사용이 불가합니다.");           
+			getch();
 			gotoxy(22,22);
-			printf("                                                     ");
+			printf("                                ");
+		}else if(id[0] =='\0' ||pw[0]=='\0'||name[0]=='\0'||phone[0]=='\0' ){
+			gotoxy(25,22);
+			printf("작성하지 않은 항목이 존재합니다.");
+			getch();
+			gotoxy(25,22);
+			printf("                                ");
+		}else{
 			break;
 		}
-		
+		gotoxy(35,9);
+		for(int i=0; i<4; i++){
+			printf("                   \n\n");
+		}
 	}
-	gotoxy(35, 11);
-	gets_s(pw,sizeof pw);
-
-	gotoxy(35,13);
-	gets_s(name,sizeof name);
-
-	gotoxy(35,15);
-	gets_s(phone,sizeof phone);
-
+	
+		
+	
 	
 	while(1){
 		gotoxy(27,19);
@@ -270,11 +282,11 @@ void signUp(){
 			EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
 
 			EXEC SQL COMMIT WORK ;
-			gotoxy(22,22);
+			gotoxy(25,22);
 			printf("회원가입이 완료되었습니다.");
 			break;
 		}else if(strcmp(a,"n")==0 || strcmp(a,"N")==0){
-			gotoxy(22,22);
+			gotoxy(25,22);
 			printf("회원가입을 취소하였습니다.");
 			break;
 		}else{		

@@ -113,7 +113,6 @@ void search_Use_All(){
 	EXEC SQL OPEN b_cursor ; 
 
 	EXEC SQL WHENEVER NOT FOUND DO break;
-	int exit;
 	char c;
 	x = 7;
   	y = 13 ;
@@ -600,19 +599,19 @@ int search_food(char food_name[20]){
 	EXEC SQL PREPARE S FROM :dynstmt ;
 
 	/* cursor ¼±¾ð */
-	EXEC SQL DECLARE z_cursor CURSOR FOR S ; 
+	EXEC SQL DECLARE x_cursor CURSOR FOR S ; 
 	
 	/* cursor open */
-	EXEC SQL OPEN z_cursor ; 
+	EXEC SQL OPEN x_cursor ; 
 
 	EXEC SQL WHENEVER NOT FOUND DO break;
 
   	for (;;){
-		EXEC SQL FETCH z_cursor INTO :pname;
+		EXEC SQL FETCH x_cursor INTO :pname;
 		return 1;
    	 }
 	
     	/* Close the cursor. */
-   	EXEC SQL CLOSE z_cursor;
+   	EXEC SQL CLOSE x_cursor;
 	return 0;	
 }

@@ -140,9 +140,9 @@ static const short sqlcud0[] =
 51,0,0,3,0,0,17,161,0,0,1,1,0,1,0,1,97,0,0,
 70,0,0,3,0,0,45,167,0,0,0,0,0,1,0,
 85,0,0,3,0,0,13,173,0,0,3,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,
-112,0,0,4,0,0,24,270,0,0,1,1,0,1,0,1,97,0,0,
-131,0,0,5,0,0,29,272,0,0,0,0,0,1,0,
-146,0,0,6,0,0,31,333,0,0,0,0,0,1,0,
+112,0,0,4,0,0,24,282,0,0,1,1,0,1,0,1,97,0,0,
+131,0,0,5,0,0,29,284,0,0,0,0,0,1,0,
+146,0,0,6,0,0,31,345,0,0,0,0,0,1,0,
 };
 
 
@@ -517,7 +517,7 @@ struct { unsigned short len; unsigned char arr[100]; } pw;
 					id.arr[id.len] = '\0' ;
 					pw.arr[pw.len] = '\0';
 					if(id.arr[0]=='\0'){
-						co==0;
+						co=0;
 					}					
 					if(strcmp(pw_temp,pw.arr)==0){
 						gotoxy(28,16);
@@ -529,7 +529,7 @@ struct { unsigned short len; unsigned char arr[100]; } pw;
 						}else{
 							gogakMain(id.arr);
 						}
-						break;
+						return;
 
 					}else{
 						gotoxy(29,16);
@@ -577,27 +577,39 @@ void signUp(){
 	while(1){
 		gotoxy(35,9);
 		gets_s(id,sizeof id);
+
+		gotoxy(35, 11);
+		gets_s(pw,sizeof pw);
+
+		gotoxy(35,13);
+		gets_s(name,sizeof name);
+
+		gotoxy(35,15);
+		gets_s(phone,sizeof phone);
+		
 		if(id[0]=='*'){
 			gotoxy(22,22);
-			printf("*는 첫번째 자리에 사용이 불가합니다.");
-			gotoxy(35,9);
-			printf("                          ");
-		}else{
+			printf("*는 첫번째 자리에 사용이 불가합니다.");           
+			getch();
 			gotoxy(22,22);
-			printf("                                                     ");
+			printf("                                ");
+		}else if(id[0] =='\0' ||pw[0]=='\0'||name[0]=='\0'||phone[0]=='\0' ){
+			gotoxy(25,22);
+			printf("작성하지 않은 항목이 존재합니다.");
+			getch();
+			gotoxy(25,22);
+			printf("                                ");
+		}else{
 			break;
 		}
-		
+		gotoxy(35,9);
+		for(int i=0; i<4; i++){
+			printf("                   \n\n");
+		}
 	}
-	gotoxy(35, 11);
-	gets_s(pw,sizeof pw);
-
-	gotoxy(35,13);
-	gets_s(name,sizeof name);
-
-	gotoxy(35,15);
-	gets_s(phone,sizeof phone);
-
+	
+		
+	
 	
 	while(1){
 		gotoxy(27,19);
@@ -669,11 +681,11 @@ void signUp(){
 }
 
 
-			gotoxy(22,22);
+			gotoxy(25,22);
 			printf("회원가입이 완료되었습니다.");
 			break;
 		}else if(strcmp(a,"n")==0 || strcmp(a,"N")==0){
-			gotoxy(22,22);
+			gotoxy(25,22);
 			printf("회원가입을 취소하였습니다.");
 			break;
 		}else{		

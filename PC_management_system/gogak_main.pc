@@ -30,6 +30,7 @@ void pc_exit();
 void pc_stop();
 int getPrice(char pro[10]);
 void buy_pro(char num[10], char number[10], int price);
+int choose_food();
 
 // win32 Visual C 2010 이상컴파일시 추가
 
@@ -55,6 +56,9 @@ void gogakMain(char str_id[20]){
 		gotoxy(36,17);
 		gets_s(gogak_select, sizeof gogak_select);
 		if(gogak_select[0]=='\0'){
+			gotoxy(25,18); // 잘 못 입력 되었다는 것을 알리기
+			printf("메인으로 돌아갑니다..");
+			getch();
 			return;
 		}else{ 
 		if( strcmp(gogak_select,"1") == 0){
@@ -82,7 +86,6 @@ void gogakMain(char str_id[20]){
 void gogakUsgin(){
 	clrscr();
 	print_screen("myUsing.txt");
-	int c;
 	int x,y,count=0, page=1;
 	EXEC SQL BEGIN DECLARE SECTION;
    		varchar hnum[100];
@@ -97,7 +100,8 @@ void gogakUsgin(){
 	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
 
 	/* 실행시킬 SQL 문장*/
-   	sprintf(dynstmt,"select to_char(hnum) as hnum, to_char(seat) as seat, to_char(stime, 'YYYY-MM-DD')  as day, to_char(stime, 'HH24:MI') as stime , nvl2(etime, to_char(stime, 'HH24:MI'),to_char('사용 중')) as etime from use_history where gid='%s' order by hnum desc",gogakID); 
+
+   	sprintf(dynstmt,"select to_char(hnum), to_char(seat) , to_char(stime, 'YYYY-MM-DD') , to_char(stime, 'HH24:MI')  , nvl2(etime, to_char(stime, 'HH24:MI'),to_char('사용 중')) from use_history where gid='%s' order by hnum desc",gogakID); 
 
 	EXEC SQL PREPARE S FROM :dynstmt ;
 
@@ -107,11 +111,11 @@ void gogakUsgin(){
 	/* cursor open */
 	EXEC SQL OPEN b_cursor ; 
 
-	
+	EXEC SQL WHENEVER NOT FOUND DO break;
 
 	x = 8;
   	y = 11 ;
-	EXEC SQL WHENEVER NOT FOUND DO break;
+	char c;
   	for (;;){
 		EXEC SQL FETCH b_cursor INTO :hnum, :seat, :day, :stime, :etime;
 		
@@ -131,11 +135,12 @@ void gogakUsgin(){
 		if( count == 5){
 			count = 0;
 			page++;
+			
 			while(1){
 				if (_kbhit()) {       
-           					c = getch();   
-           					 if (c == -32) {    
-               				 	c = getch();
+					c = getch();   
+					if (c == -32) {    
+						c = getch();
 						if(c==77){
 							break;
 						}				
@@ -153,7 +158,7 @@ void gogakUsgin(){
 
    	}
 	gotoxy(70,16);
-    	printf("(END)");
+    printf("(END)");
 	getE();
 
     	/* Close the cursor. */
@@ -238,7 +243,6 @@ while(1){
 void getBuyList(){
 	clrscr();
 	print_screen("myBuy.txt");
-	char c = NULL;
 	int x,y,count=0, page=1;
 	EXEC SQL BEGIN DECLARE SECTION;
    		varchar snum[100];
@@ -268,9 +272,10 @@ void getBuyList(){
 
 	x = 11;
   	y = 11 ;
+	char c;
   	for (;;){
 		EXEC SQL FETCH a_cursor INTO :snum, :pname, :date, :samount, :pprice, :total;
-		
+
 		snum.arr[snum.len] = '\0' ;
 		pname.arr[pname.len] = '\0' ;
 		date.arr[date.len] = '\0';
@@ -280,7 +285,7 @@ void getBuyList(){
 		
 
 		gotoxy(x,y);
-		printf("%-3s  %-10s %-15s       %s       %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
+		printf("%-3s  %-10s %-15s         %s     %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
 
 		y++;
 		count++;
@@ -289,11 +294,12 @@ void getBuyList(){
 		if( count == 5){
 			count = 0;
 			page++;
+			
 			while(1){
 				if (_kbhit()) {       
-           					c = getch();   
-           					 if (c == -32) {    
-               				 	c = getch();
+					c = getch();   
+					if (c == -32) {    
+						c = getch();
 						if(c==77){
 							break;
 						}				
@@ -308,16 +314,16 @@ void getBuyList(){
 			}
 			y = 11 ;
 		}
-
-   	 }
+	}
 	gotoxy(71,16);
-    	printf("(END)");
+    printf("(END)");
 	getE();
 
-    	/* Close the cursor. */
-   	EXEC SQL CLOSE a_cursor;
+	/* Close the cursor. */
+	EXEC SQL CLOSE a_cursor;
 
    	EXEC SQL COMMIT ;
+   
 }
 
 /*---------------   PC 사용 확인 함수 --------------------*/
@@ -555,10 +561,7 @@ void search_pro(){
 
 	x = 18;
   	y = 10 ;
-	char num[10];
-	char number[10];
-		char c = NULL;
-  	for (;;){
+  	for (;;){	
 		EXEC SQL FETCH e_cursor INTO :pnum, :pname, :pamount, :pprice;
 		
 		pnum.arr[pnum.len] = '\0' ;
@@ -575,91 +578,80 @@ void search_pro(){
 		if( count == 5){
 			page++;
 			count = 0;
-			
-   			while (1) {
-        				if (_kbhit()) {             
-           					 c = _getch();        
-          					  if (c == -32) {       
-              					c = _getch();   
-						  if(c==77){
-							break;
-	 					  }else if(c==80){
-							while(1){
-								gotoxy(34,20);
-								gets_s(num, sizeof num);
-								gotoxy(54,20);
-								gets_s(number, sizeof number);
-							    if(num[0]!='\0' && number[0] !='\0'){
-								int price = getPrice(num);
-								if(price ==-1){
-									gotoxy(32,21);
-									printf("잘못된 번호입니다.");
-									getch();	
-									gotoxy(32,21);
-									printf("                            ");
-									gotoxy(25,20);
-									printf("번호 >>              수량>>                        ");
-								}else{
-									
-									buy_pro(num,number,price);
-									return;
-								}
-	
-							}else{
-								return;
-							}
-						}
-					}
-                
-           					 }
-				}else if (c==13){
-						gotoxy(32,21);
-								printf("구매를 종료합니다.");
-								getch();
-						return;
-       			 }
-   		 }
-		gotoxy(18,11); //이전 화면 부분 클리어	
-	            	for(int i= 0; i < 5; i++){
-			printf("                                                                                             \n");
-		}
-		y = 10 ;
-			
-		}
-		
-		
-   	 }	
-	while(1){
-		gotoxy(34,20);
-		gets_s(num, sizeof num);
-		gotoxy(54,20);
-		gets_s(number, sizeof number);
-		if(num[0]!='\0' && number[0] !='\0'){
-			int price = getPrice(num);
-			if(price ==-1){
-				gotoxy(32,21);
-				printf("잘못된 번호입니다.");
-				getch();	
-				gotoxy(32,21);
-				printf("                            ");
-				gotoxy(25,20);
-				printf("번호 >>              수량>>                        ");
-			}else{
-								
-				buy_pro(num,number,price);
+   			int a = choose_food();
+			if(a==0){
 				return;
 			}
-		}else{
-			gotoxy(32,21);
-			printf("구매를 종료합니다.");
-			return;
+			gotoxy(18,11); //이전 화면 부분 클리어	
+			for(int i= 0; i < 5; i++){
+				printf("                                                                                             \n");
+			}
+			y = 10 ;
+			
+		}	
+	}
+	choose_food();
+	gotoxy(27,17);
+	printf("Enter key를 누르면 종료합니다.");
+	getE();
+	/* Close the cursor. */
+		EXEC SQL CLOSE e_cursor;
+
+		EXEC SQL COMMIT ;
+				
+	
+}
+/*---------------   음식 선택 함수 --------------------*/
+int choose_food(){
+	char num[10];
+	char number[10];
+	char c;
+	while (1) {
+		if (_kbhit()) {             
+			c = _getch();        
+			if (c == -32) {       
+				c = _getch();   
+				if(c==77){
+					break;
+				}else if(c==80){
+					while(1){
+						gotoxy(26,17);
+						printf("구매할 상품의 번호를 입력해주세요");
+						gotoxy(26,18);
+						printf("번호 >>              수량>>       ");
+						gotoxy(34,18);
+						gets_s(num, sizeof num);
+						gotoxy(54,18);
+						gets_s(number, sizeof number);
+						if(num[0]!='\0' && number[0] !='\0'){
+							int price = getPrice(num);
+							if(price ==-1){
+								gotoxy(32,21);
+								printf("잘못된 번호입니다.");
+								getch();	
+								gotoxy(32,21);
+								printf("                            ");
+							}else{
+								buy_pro(num,number,price);
+								return 1;
+							}
+						}else{
+							gotoxy(30,22);
+							printf("구매를 취소했습니다.");
+							getch();
+							return 0;
+						}
+					}
+				}
+	
+			}else if (c==13){
+					gotoxy(32,21);
+					printf("구매를 종료합니다.");
+					getch();
+					return 0;
+			}
 		}
 	}
-    	/* Close the cursor. */
-   	EXEC SQL CLOSE e_cursor;
-
-   	EXEC SQL COMMIT ;
-		
 }
 
 /*---------------   음식 구매 함수 --------------------*/
@@ -685,7 +677,7 @@ void buy_pro(char num[10], char number[10], int price){
 				gotoxy(30,22);
 				printf("재고가 부족합니다!!");
 				getch();
-				gogakMain(gogakID);	
+				return;
 			}else{
 		       		EXEC SQL COMMIT WORK ; 
 				gotoxy(30,22);
@@ -693,13 +685,13 @@ void buy_pro(char num[10], char number[10], int price){
 				gotoxy(30,22);
 				printf("구매를 하였습니다.");
 				getch();
-				gogakMain(gogakID);
+				return;
 			}
 		} else if(strcmp(buy,"n")==0 || strcmp(buy,"N")==0){
 			gotoxy(30,22);
 			printf("구매를 취소했습니다.");
 			getch();
-			gogakMain(gogakID);
+			return;
 		}else{
 			gotoxy(30,23);
 			printf("잘못 입력했습니다.");
@@ -709,6 +701,7 @@ void buy_pro(char num[10], char number[10], int price){
 		}
 	}
 }
+
 			
 
 /*---------------   물품 가격 찾기 함수 --------------------*/

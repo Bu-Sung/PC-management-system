@@ -1,9 +1,6 @@
 ﻿  emp_main.c
-C:\Users\User\Desktop\PC_management_system\PC_management_system\emp_main.c(364,6): warning C4101: 'exit' :참조되지 않은 지역 변수입니다.
   gogak_main.c
-C:\Users\User\Desktop\PC_management_system\PC_management_system\gogak_main.c(660,1): warning C4047: '초기화 중': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-C:\Users\User\Desktop\PC_management_system\PC_management_system\gogak_main.c(1635,1): warning C4047: '초기화 중': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
   PC_main.c
-C:\Users\User\Desktop\PC_management_system\PC_management_system\PC_main.c(520,9): warning C4553: '==': 식의 결과가 사용되지 않습니다. '='을(를) 의도했습니까?
   코드를 생성하고 있습니다...
-  PC_management_system.vcxproj -> C:\Users\User\Desktop\PC_management_system\Debug\PC_management_system.exe
+C:\Users\User\Desktop\PC-management-system\PC_management_system\gogak_main.c(1830): warning C4715: 'choose_food': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  PC_management_system.vcxproj -> C:\Users\User\Desktop\PC-management-system\Debug\PC_management_system.exe
