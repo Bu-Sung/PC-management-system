@@ -135,47 +135,47 @@ typedef struct { unsigned short len; unsigned char arr[1]; } varchar;
 /* cud (compilation unit data) array */
 static const short sqlcud0[] =
 {13,4130,1,0,0,
-5,0,0,1,0,0,17,101,0,0,1,1,0,1,0,1,97,0,0,
-24,0,0,1,0,0,45,107,0,0,0,0,0,1,0,
-39,0,0,1,0,0,13,114,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,
-74,0,0,1,0,0,15,157,0,0,0,0,0,1,0,
-89,0,0,2,0,0,29,159,0,0,0,0,0,1,0,
-104,0,0,3,0,0,24,213,0,0,1,1,0,1,0,1,97,0,0,
-123,0,0,4,0,0,29,215,0,0,0,0,0,1,0,
-138,0,0,1,0,0,17,256,0,0,1,1,0,1,0,1,97,0,0,
-157,0,0,1,0,0,45,262,0,0,0,0,0,1,0,
-172,0,0,1,0,0,13,269,0,0,6,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
+5,0,0,1,0,0,17,102,0,0,1,1,0,1,0,1,97,0,0,
+24,0,0,1,0,0,45,108,0,0,0,0,0,1,0,
+39,0,0,1,0,0,13,116,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,
+74,0,0,1,0,0,15,160,0,0,0,0,0,1,0,
+89,0,0,2,0,0,29,162,0,0,0,0,0,1,0,
+104,0,0,3,0,0,24,216,0,0,1,1,0,1,0,1,97,0,0,
+123,0,0,4,0,0,29,218,0,0,0,0,0,1,0,
+138,0,0,1,0,0,17,259,0,0,1,1,0,1,0,1,97,0,0,
+157,0,0,1,0,0,45,265,0,0,0,0,0,1,0,
+172,0,0,1,0,0,13,272,0,0,6,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
 0,0,
-211,0,0,1,0,0,15,301,0,0,0,0,0,1,0,
-226,0,0,5,0,0,29,303,0,0,0,0,0,1,0,
-241,0,0,1,0,0,17,325,0,0,1,1,0,1,0,1,97,0,0,
-260,0,0,1,0,0,45,329,0,0,0,0,0,1,0,
-275,0,0,1,0,0,13,339,0,0,2,0,0,1,0,2,3,0,0,2,9,0,0,
-298,0,0,1,0,0,15,356,0,0,0,0,0,1,0,
-313,0,0,6,0,0,24,411,0,0,1,1,0,1,0,1,97,0,0,
-332,0,0,7,0,0,29,414,0,0,0,0,0,1,0,
-347,0,0,1,0,0,17,434,0,0,1,1,0,1,0,1,97,0,0,
-366,0,0,1,0,0,45,440,0,0,0,0,0,1,0,
-381,0,0,1,0,0,13,445,0,0,3,0,0,1,0,2,9,0,0,2,3,0,0,2,3,0,0,
-408,0,0,1,0,0,15,485,0,0,0,0,0,1,0,
-423,0,0,8,0,0,29,487,0,0,0,0,0,1,0,
-438,0,0,9,0,0,24,500,0,0,1,1,0,1,0,1,97,0,0,
-457,0,0,10,0,0,29,507,0,0,0,0,0,1,0,
-472,0,0,1,0,0,17,529,0,0,1,1,0,1,0,1,97,0,0,
-491,0,0,1,0,0,45,535,0,0,0,0,0,1,0,
-506,0,0,1,0,0,13,544,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,2,3,0,0,
-537,0,0,1,0,0,15,618,0,0,0,0,0,1,0,
-552,0,0,11,0,0,29,620,0,0,0,0,0,1,0,
-567,0,0,12,0,0,24,649,0,0,1,1,0,1,0,1,97,0,0,
-586,0,0,13,0,0,29,656,0,0,0,0,0,1,0,
-601,0,0,1,0,0,17,693,0,0,1,1,0,1,0,1,97,0,0,
-620,0,0,1,0,0,45,697,0,0,0,0,0,1,0,
-635,0,0,1,0,0,13,704,0,0,1,0,0,1,0,2,3,0,0,
-654,0,0,1,0,0,15,711,0,0,0,0,0,1,0,
-669,0,0,1,0,0,17,734,0,0,1,1,0,1,0,1,97,0,0,
-688,0,0,1,0,0,45,738,0,0,0,0,0,1,0,
-703,0,0,1,0,0,13,744,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,3,0,0,
-738,0,0,1,0,0,15,758,0,0,0,0,0,1,0,
+211,0,0,1,0,0,15,318,0,0,0,0,0,1,0,
+226,0,0,5,0,0,29,320,0,0,0,0,0,1,0,
+241,0,0,1,0,0,17,342,0,0,1,1,0,1,0,1,97,0,0,
+260,0,0,1,0,0,45,346,0,0,0,0,0,1,0,
+275,0,0,1,0,0,13,356,0,0,2,0,0,1,0,2,3,0,0,2,9,0,0,
+298,0,0,1,0,0,15,373,0,0,0,0,0,1,0,
+313,0,0,6,0,0,24,428,0,0,1,1,0,1,0,1,97,0,0,
+332,0,0,7,0,0,29,431,0,0,0,0,0,1,0,
+347,0,0,1,0,0,17,451,0,0,1,1,0,1,0,1,97,0,0,
+366,0,0,1,0,0,45,457,0,0,0,0,0,1,0,
+381,0,0,1,0,0,13,462,0,0,3,0,0,1,0,2,9,0,0,2,3,0,0,2,3,0,0,
+408,0,0,1,0,0,15,502,0,0,0,0,0,1,0,
+423,0,0,8,0,0,29,504,0,0,0,0,0,1,0,
+438,0,0,9,0,0,24,517,0,0,1,1,0,1,0,1,97,0,0,
+457,0,0,10,0,0,29,524,0,0,0,0,0,1,0,
+472,0,0,1,0,0,17,546,0,0,1,1,0,1,0,1,97,0,0,
+491,0,0,1,0,0,45,552,0,0,0,0,0,1,0,
+506,0,0,1,0,0,13,562,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,2,3,0,0,
+537,0,0,1,0,0,15,659,0,0,0,0,0,1,0,
+552,0,0,11,0,0,29,661,0,0,0,0,0,1,0,
+567,0,0,12,0,0,24,683,0,0,1,1,0,1,0,1,97,0,0,
+586,0,0,13,0,0,29,690,0,0,0,0,0,1,0,
+601,0,0,1,0,0,17,727,0,0,1,1,0,1,0,1,97,0,0,
+620,0,0,1,0,0,45,731,0,0,0,0,0,1,0,
+635,0,0,1,0,0,13,738,0,0,1,0,0,1,0,2,3,0,0,
+654,0,0,1,0,0,15,743,0,0,0,0,0,1,0,
+669,0,0,1,0,0,17,766,0,0,1,1,0,1,0,1,97,0,0,
+688,0,0,1,0,0,45,770,0,0,0,0,0,1,0,
+703,0,0,1,0,0,13,776,0,0,5,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,3,0,0,
+738,0,0,1,0,0,15,790,0,0,0,0,0,1,0,
 };
 
 
@@ -210,7 +210,8 @@ void search_pro();
 void pc_exit();
 void pc_stop();
 int getPrice(char pro[10]);
-void buy_pro(char num[10], char number[10]);
+void buy_pro(char num[10], char number[10], int price);
+
 // win32 Visual C 2010 이상컴파일시 추가
 
 //-----------------------------------------
@@ -228,7 +229,6 @@ int fail;
 void gogakMain(char str_id[20]){
 	Select_tuple(str_id);
 	char gogak_select[10];
-
 	while(1){
 		clrscr();
 		print_screen("gogakMain.txt");
@@ -236,6 +236,9 @@ void gogakMain(char str_id[20]){
 		printf("%s", gogakNAME);
 		gotoxy(36,17);
 		gets_s(gogak_select, sizeof gogak_select);
+		if(gogak_select[0]=='\0'){
+			return;
+		}else{ 
 		if( strcmp(gogak_select,"1") == 0){
 			search_pro();
 		}else if (strcmp(gogak_select,"2") == 0){
@@ -246,12 +249,11 @@ void gogakMain(char str_id[20]){
 			gogakUsgin();
 		}else if (strcmp(gogak_select,"5") == 0){
 			getBuyList();
-		}else if(strcmp(gogak_select,"exit") == 0){
-			break;
 		}else{
 			gotoxy(25,18); // 잘 못 입력 되었다는 것을 알리기
 			printf("잘못된 입력입니다. 다시 입력해주세요");
 			getch();
+		}
 		}
 		
 	}
@@ -259,12 +261,11 @@ void gogakMain(char str_id[20]){
 }
 
 /*---------------   본인 사용 기록 조회 함수 --------------------*/
-
 void gogakUsgin(){
 	clrscr();
 	print_screen("myUsing.txt");
-	int key;
-	int x,y,count=0, page=0;
+	int c;
+	int x,y,count=0, page=1;
 	/* EXEC SQL BEGIN DECLARE SECTION; */ 
 
    		/* varchar hnum[100]; */ 
@@ -359,11 +360,12 @@ struct { unsigned short len; unsigned char arr[100]; } etime;
 
  
 
-	/* EXEC SQL WHENEVER NOT FOUND DO break; */ 
-
+	
 
 	x = 8;
   	y = 11 ;
+	/* EXEC SQL WHENEVER NOT FOUND DO break; */ 
+
   	for (;;){
 		/* EXEC SQL FETCH b_cursor INTO :hnum, :seat, :day, :stime, :etime; */ 
 
@@ -450,22 +452,23 @@ struct { unsigned short len; unsigned char arr[100]; } etime;
 
 		y++;
 		count++;
-		
+		gotoxy(40,16);
+		printf("%d",page);
 		if( count == 5){
 			count = 0;
+			page++;
 			while(1){
-			if (_kbhit()) {       
-           				key = getch();   
-           				 if (key == -32) {    
-               			 	key = getch();
-					if(key==77){
-						break;
+				if (_kbhit()) {       
+           					c = getch();   
+           					 if (c == -32) {    
+               				 	c = getch();
+						if(c==77){
+							break;
+						}				
+					}else if( c==13){
+						return;
 					}
-					
-				}else if( key==13){
-					return;
 				}
-			}
 			}
 			gotoxy(8,11); //이전 화면 부분 클리어	
 	            	  	for(int i= 0; i < 5; i++){
@@ -474,10 +477,10 @@ struct { unsigned short len; unsigned char arr[100]; } etime;
 			y = 11 ;
 		}
 
-   	 }
-	gotoxy(71,18);
+   	}
+	gotoxy(70,16);
     	printf("(END)");
-	getch();
+	getE();
 
     	/* Close the cursor. */
    	/* EXEC SQL CLOSE b_cursor; */ 
@@ -654,8 +657,8 @@ while(1){
 void getBuyList(){
 	clrscr();
 	print_screen("myBuy.txt");
-	
-	int x,y,count=0, page=0;
+	char c = NULL;
+	int x,y,count=0, page=1;
 	/* EXEC SQL BEGIN DECLARE SECTION; */ 
 
    		/* varchar snum[100]; */ 
@@ -854,10 +857,24 @@ struct { unsigned short len; unsigned char arr[100]; } total;
 
 		y++;
 		count++;
-		
+		gotoxy(39,16);
+		printf("%d",page);
 		if( count == 5){
 			count = 0;
-			getch();
+			page++;
+			while(1){
+				if (_kbhit()) {       
+           					c = getch();   
+           					 if (c == -32) {    
+               				 	c = getch();
+						if(c==77){
+							break;
+						}				
+					}else if( c==13){
+						return;
+					}
+				}
+			}
 			gotoxy(8,11); //이전 화면 부분 클리어	
 	            	  	for(int i= 0; i < 5; i++){
 				printf("                                                                                             \n");
@@ -866,9 +883,9 @@ struct { unsigned short len; unsigned char arr[100]; } total;
 		}
 
    	 }
-	gotoxy(71,18);
+	gotoxy(71,16);
     	printf("(END)");
-	getch();
+	getE();
 
     	/* Close the cursor. */
    	/* EXEC SQL CLOSE a_cursor; */ 
@@ -1615,6 +1632,7 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
   	y = 10 ;
 	char num[10];
 	char number[10];
+		char c = NULL;
   	for (;;){
 		/* EXEC SQL FETCH e_cursor INTO :pnum, :pname, :pamount, :pprice; */ 
 
@@ -1691,45 +1709,53 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 		
 		y++;
 		count++;
-		gotoxy(40,16);
+		gotoxy(40,15);
 		printf("%-2d",page);
 		if( count == 5){
 			page++;
 			count = 0;
-			char c;
-   			 while (1) {
+			
+   			while (1) {
         				if (_kbhit()) {             
            					 c = _getch();        
           					  if (c == -32) {       
-              						  c = _getch();   
+              					c = _getch();   
 						  if(c==77){
 							break;
-	 					}
-                
-           					 }else if(c==13){
-						while(1){
-						gotoxy(34,20);
-						gets_s(num, sizeof num);
-						gotoxy(54,20);
-						gets_s(number, sizeof number);
-						if(num[0]!='\0' && number[0] !='\0'){
-							buy_pro(num, number);
-							gotoxy(32,21);
-							printf("잘못된 번호입니다.");
-							getch();	
-							gotoxy(32,21);
-							printf("                            ");
-							gotoxy(25,20);
-							printf("번호 >>              수량>>                        ");
-						}else{
-							gotoxy(32,21);
-							printf("구매를 종료합니다.");
-							getch();
-							gogakMain(gogakID);
-
-						}
+	 					  }else if(c==80){
+							while(1){
+								gotoxy(34,20);
+								gets_s(num, sizeof num);
+								gotoxy(54,20);
+								gets_s(number, sizeof number);
+							    if(num[0]!='\0' && number[0] !='\0'){
+								int price = getPrice(num);
+								if(price ==-1){
+									gotoxy(32,21);
+									printf("잘못된 번호입니다.");
+									getch();	
+									gotoxy(32,21);
+									printf("                            ");
+									gotoxy(25,20);
+									printf("번호 >>              수량>>                        ");
+								}else{
+									
+									buy_pro(num,number,price);
+									return;
+								}
+	
+							}else{
+								return;
+							}
 						}
 					}
+                
+           					 }
+				}else if (c==13){
+						gotoxy(32,21);
+								printf("구매를 종료합니다.");
+								getch();
+						return;
        			 }
    		 }
 		gotoxy(18,11); //이전 화면 부분 클리어	
@@ -1742,17 +1768,32 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 		
 		
    	 }	
+	while(1){
 		gotoxy(34,20);
 		gets_s(num, sizeof num);
 		gotoxy(54,20);
 		gets_s(number, sizeof number);
 		if(num[0]!='\0' && number[0] !='\0'){
-			buy_pro(num, number);
+			int price = getPrice(num);
+			if(price ==-1){
+				gotoxy(32,21);
+				printf("잘못된 번호입니다.");
+				getch();	
+				gotoxy(32,21);
+				printf("                            ");
+				gotoxy(25,20);
+				printf("번호 >>              수량>>                        ");
+			}else{
+								
+				buy_pro(num,number,price);
+				return;
+			}
 		}else{
 			gotoxy(32,21);
 			printf("구매를 종료합니다.");
-			getch();
+			return;
 		}
+	}
     	/* Close the cursor. */
    	/* EXEC SQL CLOSE e_cursor; */ 
 
@@ -1797,118 +1838,111 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 }
 
 /*---------------   음식 구매 함수 --------------------*/
-void buy_pro(char num[10], char number[10]){
-/* EXEC SQL BEGIN DECLARE SECTION; */ 
+void buy_pro(char num[10], char number[10], int price){
+	/* EXEC SQL BEGIN DECLARE SECTION; */ 
 
 
-	   char dynstmt[1000];
+		char dynstmt[1000];
 
-  /* EXEC SQL END DECLARE SECTION; */ 
+	/* EXEC SQL END DECLARE SECTION; */ 
 
 	int co = atoi(number);
-   int price = getPrice(num);
-	if(price==-1){
-		
-	}else{
-		
-  	
-       		sprintf(dynstmt,"insert into sales values ((nvl2((select max(snum) from sales),(select max(snum)+1 from sales),1)),'%s','%s',default,to_number(%s))", num,  gogakID, number);
-       		
-			gotoxy(30,21);
-		      	printf("가격은 %d입니다.",price*co);
-
-		while(1){
-			gotoxy(30,22);
-			printf("구매 (y/n) >>");
-			char buy[20];
-			gets_s(buy,sizeof buy);
-			if(strcmp(buy,"y")==0 || strcmp(buy,"Y")==0){
-				/* EXEC SQL EXECUTE IMMEDIATE :dynstmt ; */ 
+   	sprintf(dynstmt,"insert into sales values ((nvl2((select max(snum) from sales),(select max(snum)+1 from sales),1)),'%s','%s',default,%d)", num,  gogakID, co);
+     		
+	gotoxy(30,21);
+      	printf("가격은 %d입니다.",price*co);
+	while(1){
+		gotoxy(30,22);
+		printf("구매 (y/n) >>");
+		char buy[20];
+		gets_s(buy,sizeof buy);
+		if(strcmp(buy,"y")==0 || strcmp(buy,"Y")==0){
+			/* EXEC SQL EXECUTE IMMEDIATE :dynstmt ; */ 
 
 {
-    struct sqlexd sqlstm;
-    sqlstm.sqlvsn = 13;
-    sqlstm.arrsiz = 6;
-    sqlstm.sqladtp = &sqladt;
-    sqlstm.sqltdsp = &sqltds;
-    sqlstm.stmt = "";
-    sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )567;
-    sqlstm.cud = sqlcud0;
-    sqlstm.sqlest = (unsigned char  *)&sqlca;
-    sqlstm.sqlety = (unsigned short)4352;
-    sqlstm.occurs = (unsigned int  )0;
-    sqlstm.sqhstv[0] = (         void  *)dynstmt;
-    sqlstm.sqhstl[0] = (unsigned int  )1000;
-    sqlstm.sqhsts[0] = (         int  )0;
-    sqlstm.sqindv[0] = (         void  *)0;
-    sqlstm.sqinds[0] = (         int  )0;
-    sqlstm.sqharm[0] = (unsigned int  )0;
-    sqlstm.sqadto[0] = (unsigned short )0;
-    sqlstm.sqtdso[0] = (unsigned short )0;
-    sqlstm.sqphsv = sqlstm.sqhstv;
-    sqlstm.sqphsl = sqlstm.sqhstl;
-    sqlstm.sqphss = sqlstm.sqhsts;
-    sqlstm.sqpind = sqlstm.sqindv;
-    sqlstm.sqpins = sqlstm.sqinds;
-    sqlstm.sqparm = sqlstm.sqharm;
-    sqlstm.sqparc = sqlstm.sqharc;
-    sqlstm.sqpadto = sqlstm.sqadto;
-    sqlstm.sqptdso = sqlstm.sqtdso;
-    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
-    if (sqlca.sqlcode == 1403) break;
-    if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+   struct sqlexd sqlstm;
+   sqlstm.sqlvsn = 13;
+   sqlstm.arrsiz = 6;
+   sqlstm.sqladtp = &sqladt;
+   sqlstm.sqltdsp = &sqltds;
+   sqlstm.stmt = "";
+   sqlstm.iters = (unsigned int  )1;
+   sqlstm.offset = (unsigned int  )567;
+   sqlstm.cud = sqlcud0;
+   sqlstm.sqlest = (unsigned char  *)&sqlca;
+   sqlstm.sqlety = (unsigned short)4352;
+   sqlstm.occurs = (unsigned int  )0;
+   sqlstm.sqhstv[0] = (         void  *)dynstmt;
+   sqlstm.sqhstl[0] = (unsigned int  )1000;
+   sqlstm.sqhsts[0] = (         int  )0;
+   sqlstm.sqindv[0] = (         void  *)0;
+   sqlstm.sqinds[0] = (         int  )0;
+   sqlstm.sqharm[0] = (unsigned int  )0;
+   sqlstm.sqadto[0] = (unsigned short )0;
+   sqlstm.sqtdso[0] = (unsigned short )0;
+   sqlstm.sqphsv = sqlstm.sqhstv;
+   sqlstm.sqphsl = sqlstm.sqhstl;
+   sqlstm.sqphss = sqlstm.sqhsts;
+   sqlstm.sqpind = sqlstm.sqindv;
+   sqlstm.sqpins = sqlstm.sqinds;
+   sqlstm.sqparm = sqlstm.sqharm;
+   sqlstm.sqparc = sqlstm.sqharc;
+   sqlstm.sqpadto = sqlstm.sqadto;
+   sqlstm.sqptdso = sqlstm.sqtdso;
+   sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+   if (sqlca.sqlcode == 1403) break;
+   if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
 }
 
 
-				if(fail==1){
-					gotoxy(30,22);
-					printf("재고가 부족합니다!!");
-					getch();
-					gogakMain(gogakID);	
-				}else{
-			       		/* EXEC SQL COMMIT WORK ; */ 
+			if(fail==1){
+				gotoxy(30,22);
+				printf("재고가 부족합니다!!");
+				getch();
+				gogakMain(gogakID);	
+			}else{
+		       		/* EXEC SQL COMMIT WORK ; */ 
 
 {
-            struct sqlexd sqlstm;
-            sqlstm.sqlvsn = 13;
-            sqlstm.arrsiz = 6;
-            sqlstm.sqladtp = &sqladt;
-            sqlstm.sqltdsp = &sqltds;
-            sqlstm.iters = (unsigned int  )1;
-            sqlstm.offset = (unsigned int  )586;
-            sqlstm.cud = sqlcud0;
-            sqlstm.sqlest = (unsigned char  *)&sqlca;
-            sqlstm.sqlety = (unsigned short)4352;
-            sqlstm.occurs = (unsigned int  )0;
-            sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
-            if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+           struct sqlexd sqlstm;
+           sqlstm.sqlvsn = 13;
+           sqlstm.arrsiz = 6;
+           sqlstm.sqladtp = &sqladt;
+           sqlstm.sqltdsp = &sqltds;
+           sqlstm.iters = (unsigned int  )1;
+           sqlstm.offset = (unsigned int  )586;
+           sqlstm.cud = sqlcud0;
+           sqlstm.sqlest = (unsigned char  *)&sqlca;
+           sqlstm.sqlety = (unsigned short)4352;
+           sqlstm.occurs = (unsigned int  )0;
+           sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+           if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
 }
 
  
-					gotoxy(30,22);
-					printf("                      ");
-					gotoxy(30,22);
-					printf("구매를 하였습니다.");
-					getch();
-					gogakMain(gogakID);
-				}
-			} else if(strcmp(buy,"N")==0 || strcmp(buy,"N")==0){
 				gotoxy(30,22);
-				printf("구매를 취소했습니다.");
+				printf("                      ");
+				gotoxy(30,22);
+				printf("구매를 하였습니다.");
 				getch();
 				gogakMain(gogakID);
-			}else{
-				gotoxy(30,23);
-				printf("잘못 입력했습니다.");
-				getch();
-				gotoxy(30,23);
-				printf("                                ");
 			}
+		} else if(strcmp(buy,"n")==0 || strcmp(buy,"N")==0){
+			gotoxy(30,22);
+			printf("구매를 취소했습니다.");
+			getch();
+			gogakMain(gogakID);
+		}else{
+			gotoxy(30,23);
+			printf("잘못 입력했습니다.");
+			getch();
+			gotoxy(30,23);
+			printf("                                ");
 		}
 	}
-			
 }
+			
+
 /*---------------   물품 가격 찾기 함수 --------------------*/
 int getPrice(char pro[10]){
 	/* EXEC SQL BEGIN DECLARE SECTION; */ 
@@ -2039,8 +2073,6 @@ int getPrice(char pro[10]){
 
 	price = pprice;
     }
-	
-    
 
     /* EXEC SQL CLOSE t_cursor; */ 
 
@@ -2246,7 +2278,7 @@ struct { unsigned short len; unsigned char arr[20]; } v_phone;
 	    strcpy(gogakNAME, v_name.arr);
              	    strcpy(gogakPHONE, v_phone.arr);
       	    gogakUSING = v_using;
-		return 1;
+	return 1;
     }
 return 0;	
     /* EXEC SQL CLOSE c_cursor; */ 

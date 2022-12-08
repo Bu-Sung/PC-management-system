@@ -587,12 +587,15 @@ void input_food(){
 	
 	
 }
-/*---------------   음식 검색
- 함수 --------------------*/
+/*---------------   음식 검색함수 --------------------*/
 int search_food(char food_name[20]){
+	EXEC SQL BEGIN DECLARE SECTION;
+   		char pname[10];
+  		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
 
 	/* 실행시킬 SQL 문장*/
-   	sprintf(dynstmt,"select * from product where = %s", food_name); 
+   	sprintf(dynstmt,"select pname from product where = %s", food_name); 
 
 	EXEC SQL PREPARE S FROM :dynstmt ;
 
@@ -605,7 +608,7 @@ int search_food(char food_name[20]){
 	EXEC SQL WHENEVER NOT FOUND DO break;
 
   	for (;;){
-		EXEC SQL FETCH z_cursor INTO :pnum, :pname, :pamount, :pprice;
+		EXEC SQL FETCH z_cursor INTO :pname;
 		return 1;
    	 }
 	
