@@ -135,15 +135,14 @@ typedef struct { unsigned short len; unsigned char arr[1]; } varchar;
 /* cud (compilation unit data) array */
 static const short sqlcud0[] =
 {13,4130,1,0,0,
-5,0,0,1,0,0,30,57,0,0,0,0,0,1,0,
-20,0,0,0,0,0,27,66,0,0,4,4,0,1,0,1,9,0,0,1,9,0,0,1,10,0,0,1,10,0,0,
-51,0,0,3,0,0,17,136,0,0,1,1,0,1,0,1,97,0,0,
-70,0,0,3,0,0,45,142,0,0,0,0,0,1,0,
-85,0,0,3,0,0,13,150,0,0,2,0,0,1,0,2,9,0,0,2,9,0,0,
-108,0,0,3,0,0,13,152,0,0,3,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,
-135,0,0,4,0,0,24,250,0,0,1,1,0,1,0,1,97,0,0,
-154,0,0,5,0,0,29,252,0,0,0,0,0,1,0,
-169,0,0,6,0,0,31,317,0,0,0,0,0,1,0,
+5,0,0,1,0,0,30,62,0,0,0,0,0,1,0,
+20,0,0,0,0,0,27,71,0,0,4,4,0,1,0,1,9,0,0,1,9,0,0,1,10,0,0,1,10,0,0,
+51,0,0,3,0,0,17,152,0,0,1,1,0,1,0,1,97,0,0,
+70,0,0,3,0,0,45,158,0,0,0,0,0,1,0,
+85,0,0,3,0,0,13,165,0,0,3,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,
+112,0,0,4,0,0,24,262,0,0,1,1,0,1,0,1,97,0,0,
+131,0,0,5,0,0,29,264,0,0,0,0,0,1,0,
+146,0,0,6,0,0,31,325,0,0,0,0,0,1,0,
 };
 
 
@@ -198,6 +197,11 @@ struct { unsigned short len; unsigned char arr[20]; } pwd;
 
 
 #define getch() _getch()
+
+//관리자 아이디
+char adminID[10] = "*admin";
+char adminPW[10] = "1234";
+char adminNAME[10] = "admin";
 
 
 /*---------------  main함수 --------------------*/
@@ -296,7 +300,7 @@ void DB_connect()
 }
 /*---------------   프로그램 시작 함수 --------------------*/
 void start(){
-	char main_select[10]={NULL,};
+	char main_select[10];
 	
 	
 	while(1){
@@ -308,6 +312,9 @@ void start(){
 			login();
 		}else if (strcmp(main_select,"2") == 0){
 			signUp();
+		}else if (strcmp(main_select,"exit") == 0 || strcmp(main_select,"EXIT") == 0){
+			gotoxy(25,18);
+			printf("프로그램을 종료합니다.");
 		}else{
 			gotoxy(37,16); //입력 창으로 가서 클리어 시키기
 			printf("        ");
@@ -350,139 +357,96 @@ struct { unsigned short len; unsigned char arr[100]; } pw;
 		gotoxy(32,11);
 		gets_s(id_temp, sizeof id_temp);
 		if(strcmp(id_temp,"exit")==0 || strcmp(id_temp,"EXIT")==0){
-			start();
+			break;
 		}
 		gotoxy(32,13);
 		gets_s(pw_temp, sizeof pw_temp);
-		if(id_temp[0]=='*'){
-			sprintf(dynstmt,"SELECT eid, epw, ename FROM emp where eid='%s'",id_temp);
+		if(strcmp(id_temp,adminID)==0){
+			if(strcmp(pw_temp,adminPW)==0){
+				empMain();
+				break;
+			}else{
+				gotoxy(29,16);
+				printf("비밀번호 오류 입니다.");
+				
+				getch();
+			}	
 		}else{
 			sprintf(dynstmt,"SELECT gid, gpw, pc_using FROM gogak where gid='%s'",id_temp);
-		}
-		/* EXEC SQL PREPARE S FROM :dynstmt ; */ 
+
+			/* EXEC SQL PREPARE S FROM :dynstmt ; */ 
 
 {
-  struct sqlexd sqlstm;
-  sqlstm.sqlvsn = 13;
-  sqlstm.arrsiz = 4;
-  sqlstm.sqladtp = &sqladt;
-  sqlstm.sqltdsp = &sqltds;
-  sqlstm.stmt = "";
-  sqlstm.iters = (unsigned int  )1;
-  sqlstm.offset = (unsigned int  )51;
-  sqlstm.cud = sqlcud0;
-  sqlstm.sqlest = (unsigned char  *)&sqlca;
-  sqlstm.sqlety = (unsigned short)4352;
-  sqlstm.occurs = (unsigned int  )0;
-  sqlstm.sqhstv[0] = (         void  *)dynstmt;
-  sqlstm.sqhstl[0] = (unsigned int  )1000;
-  sqlstm.sqhsts[0] = (         int  )0;
-  sqlstm.sqindv[0] = (         void  *)0;
-  sqlstm.sqinds[0] = (         int  )0;
-  sqlstm.sqharm[0] = (unsigned int  )0;
-  sqlstm.sqadto[0] = (unsigned short )0;
-  sqlstm.sqtdso[0] = (unsigned short )0;
-  sqlstm.sqphsv = sqlstm.sqhstv;
-  sqlstm.sqphsl = sqlstm.sqhstl;
-  sqlstm.sqphss = sqlstm.sqhsts;
-  sqlstm.sqpind = sqlstm.sqindv;
-  sqlstm.sqpins = sqlstm.sqinds;
-  sqlstm.sqparm = sqlstm.sqharm;
-  sqlstm.sqparc = sqlstm.sqharc;
-  sqlstm.sqpadto = sqlstm.sqadto;
-  sqlstm.sqptdso = sqlstm.sqtdso;
-  sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
-  if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
+   struct sqlexd sqlstm;
+   sqlstm.sqlvsn = 13;
+   sqlstm.arrsiz = 4;
+   sqlstm.sqladtp = &sqladt;
+   sqlstm.sqltdsp = &sqltds;
+   sqlstm.stmt = "";
+   sqlstm.iters = (unsigned int  )1;
+   sqlstm.offset = (unsigned int  )51;
+   sqlstm.cud = sqlcud0;
+   sqlstm.sqlest = (unsigned char  *)&sqlca;
+   sqlstm.sqlety = (unsigned short)4352;
+   sqlstm.occurs = (unsigned int  )0;
+   sqlstm.sqhstv[0] = (         void  *)dynstmt;
+   sqlstm.sqhstl[0] = (unsigned int  )1000;
+   sqlstm.sqhsts[0] = (         int  )0;
+   sqlstm.sqindv[0] = (         void  *)0;
+   sqlstm.sqinds[0] = (         int  )0;
+   sqlstm.sqharm[0] = (unsigned int  )0;
+   sqlstm.sqadto[0] = (unsigned short )0;
+   sqlstm.sqtdso[0] = (unsigned short )0;
+   sqlstm.sqphsv = sqlstm.sqhstv;
+   sqlstm.sqphsl = sqlstm.sqhstl;
+   sqlstm.sqphss = sqlstm.sqhsts;
+   sqlstm.sqpind = sqlstm.sqindv;
+   sqlstm.sqpins = sqlstm.sqinds;
+   sqlstm.sqparm = sqlstm.sqharm;
+   sqlstm.sqparc = sqlstm.sqharc;
+   sqlstm.sqpadto = sqlstm.sqadto;
+   sqlstm.sqptdso = sqlstm.sqtdso;
+   sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+   if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
 }
 
 
 
-	   	/* cursor 선언 */
-   		/* EXEC SQL DECLARE c_cursor CURSOR FOR S ; */ 
+		   	/* cursor 선언 */
+   			/* EXEC SQL DECLARE c_cursor CURSOR FOR S ; */ 
  
-
- 		 /* cursor open */
-	   	/* EXEC SQL OPEN c_cursor ; */ 
+		
+ 			 /* cursor open */
+	   		/* EXEC SQL OPEN c_cursor ; */ 
 
 {
-     struct sqlexd sqlstm;
-     sqlstm.sqlvsn = 13;
-     sqlstm.arrsiz = 4;
-     sqlstm.sqladtp = &sqladt;
-     sqlstm.sqltdsp = &sqltds;
-     sqlstm.stmt = "";
-     sqlstm.iters = (unsigned int  )1;
-     sqlstm.offset = (unsigned int  )70;
-     sqlstm.selerr = (unsigned short)1;
-     sqlstm.sqlpfmem = (unsigned int  )0;
-     sqlstm.cud = sqlcud0;
-     sqlstm.sqlest = (unsigned char  *)&sqlca;
-     sqlstm.sqlety = (unsigned short)4352;
-     sqlstm.occurs = (unsigned int  )0;
-     sqlstm.sqcmod = (unsigned int )0;
-     sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
-     if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
+      struct sqlexd sqlstm;
+      sqlstm.sqlvsn = 13;
+      sqlstm.arrsiz = 4;
+      sqlstm.sqladtp = &sqladt;
+      sqlstm.sqltdsp = &sqltds;
+      sqlstm.stmt = "";
+      sqlstm.iters = (unsigned int  )1;
+      sqlstm.offset = (unsigned int  )70;
+      sqlstm.selerr = (unsigned short)1;
+      sqlstm.sqlpfmem = (unsigned int  )0;
+      sqlstm.cud = sqlcud0;
+      sqlstm.sqlest = (unsigned char  *)&sqlca;
+      sqlstm.sqlety = (unsigned short)4352;
+      sqlstm.occurs = (unsigned int  )0;
+      sqlstm.sqcmod = (unsigned int )0;
+      sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+      if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
 }
 
  
 
-	   	/* EXEC SQL WHENEVER NOT FOUND DO break; */ 
+		   	/* EXEC SQL WHENEVER NOT FOUND DO break; */ 
 
  
 		
-		for(;;){
-			co++;
-			if(id_temp[0]=='*'){
-				/* EXEC SQL FETCH c_cursor INTO :id, :pw; */ 
-
-{
-    struct sqlexd sqlstm;
-    sqlstm.sqlvsn = 13;
-    sqlstm.arrsiz = 4;
-    sqlstm.sqladtp = &sqladt;
-    sqlstm.sqltdsp = &sqltds;
-    sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )85;
-    sqlstm.selerr = (unsigned short)1;
-    sqlstm.sqlpfmem = (unsigned int  )0;
-    sqlstm.cud = sqlcud0;
-    sqlstm.sqlest = (unsigned char  *)&sqlca;
-    sqlstm.sqlety = (unsigned short)4352;
-    sqlstm.occurs = (unsigned int  )0;
-    sqlstm.sqfoff = (           int )0;
-    sqlstm.sqfmod = (unsigned int )2;
-    sqlstm.sqhstv[0] = (         void  *)&id;
-    sqlstm.sqhstl[0] = (unsigned int  )102;
-    sqlstm.sqhsts[0] = (         int  )0;
-    sqlstm.sqindv[0] = (         void  *)0;
-    sqlstm.sqinds[0] = (         int  )0;
-    sqlstm.sqharm[0] = (unsigned int  )0;
-    sqlstm.sqadto[0] = (unsigned short )0;
-    sqlstm.sqtdso[0] = (unsigned short )0;
-    sqlstm.sqhstv[1] = (         void  *)&pw;
-    sqlstm.sqhstl[1] = (unsigned int  )102;
-    sqlstm.sqhsts[1] = (         int  )0;
-    sqlstm.sqindv[1] = (         void  *)0;
-    sqlstm.sqinds[1] = (         int  )0;
-    sqlstm.sqharm[1] = (unsigned int  )0;
-    sqlstm.sqadto[1] = (unsigned short )0;
-    sqlstm.sqtdso[1] = (unsigned short )0;
-    sqlstm.sqphsv = sqlstm.sqhstv;
-    sqlstm.sqphsl = sqlstm.sqhstl;
-    sqlstm.sqphss = sqlstm.sqhsts;
-    sqlstm.sqpind = sqlstm.sqindv;
-    sqlstm.sqpins = sqlstm.sqinds;
-    sqlstm.sqparm = sqlstm.sqharm;
-    sqlstm.sqparc = sqlstm.sqharc;
-    sqlstm.sqpadto = sqlstm.sqadto;
-    sqlstm.sqptdso = sqlstm.sqtdso;
-    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
-    if (sqlca.sqlcode == 1403) break;
-    if (sqlca.sqlcode < 0) sql_error("\7ORACLE ERROR:\n");
-}
-
-
-			}else{
+			for(;;){
+				co++;
 				/* EXEC SQL FETCH c_cursor INTO :id, :pw, :using; */ 
 
 {
@@ -492,7 +456,7 @@ struct { unsigned short len; unsigned char arr[100]; } pw;
     sqlstm.sqladtp = &sqladt;
     sqlstm.sqltdsp = &sqltds;
     sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )108;
+    sqlstm.offset = (unsigned int  )85;
     sqlstm.selerr = (unsigned short)1;
     sqlstm.sqlpfmem = (unsigned int  )0;
     sqlstm.cud = sqlcud0;
@@ -540,19 +504,15 @@ struct { unsigned short len; unsigned char arr[100]; } pw;
 }
 
 
-			}
+		
 			
-			id.arr[id.len] = '\0' ;
-			pw.arr[pw.len] = '\0';
+				id.arr[id.len] = '\0' ;
+				pw.arr[pw.len] = '\0';
 			
-			if(strcmp(pw_temp,pw.arr)==0){
-				gotoxy(28,16);
-				printf("로그인에 성공하였습니다.");
-				getch();
-				if(id_temp[0]=='*'){
-					empMain();
-					break;
-				}else{	
+				if(strcmp(pw_temp,pw.arr)==0){
+					gotoxy(28,16);
+					printf("로그인에 성공하였습니다.");
+					getch();
 					if(using == 0){
 						pc_start(id.arr);
 						gogakMain(id.arr);
@@ -560,15 +520,18 @@ struct { unsigned short len; unsigned char arr[100]; } pw;
 						gogakMain(id.arr);
 					}
 					break;
-				}
-			}else{
-				gotoxy(29,16);
-				printf("비밀번호 오류 입니다.");
+
+				}else{
+					gotoxy(29,16);
+					printf("비밀번호 오류 입니다.");
 				
-				getch();
-			}	
+					getch();
+				}	
 			
+			}
+
 		}
+		
 		if(co==0){
 			gotoxy(27,16);
 			printf("아이디가 존재하지 않습니다.");
@@ -650,7 +613,7 @@ void signUp(){
    sqlstm.sqltdsp = &sqltds;
    sqlstm.stmt = "";
    sqlstm.iters = (unsigned int  )1;
-   sqlstm.offset = (unsigned int  )135;
+   sqlstm.offset = (unsigned int  )112;
    sqlstm.cud = sqlcud0;
    sqlstm.sqlest = (unsigned char  *)&sqlca;
    sqlstm.sqlety = (unsigned short)4352;
@@ -688,7 +651,7 @@ void signUp(){
    sqlstm.sqladtp = &sqladt;
    sqlstm.sqltdsp = &sqltds;
    sqlstm.iters = (unsigned int  )1;
-   sqlstm.offset = (unsigned int  )154;
+   sqlstm.offset = (unsigned int  )131;
    sqlstm.cud = sqlcud0;
    sqlstm.sqlest = (unsigned char  *)&sqlca;
    sqlstm.sqlety = (unsigned short)4352;
@@ -753,12 +716,8 @@ int sql_error(char *msg)
 	  buf_len = sizeof (err_msg);
 		    sqlglm(err_msg, &buf_len, &msg_len);
 	if(strstr(err_msg,"ORA-20003") != NULL){
-		gotoxy(30,22);
-		printf("재고가 부족합니다!!");
-		getch();
-		return 1;
-	}
-	else{  
+		return 1; //재고 없음
+	}else{  
 		    printf("%.*s\n", msg_len, err_msg);
 	}
     getch();
@@ -772,7 +731,7 @@ int sql_error(char *msg)
     sqlstm.sqladtp = &sqladt;
     sqlstm.sqltdsp = &sqltds;
     sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )169;
+    sqlstm.offset = (unsigned int  )146;
     sqlstm.cud = sqlcud0;
     sqlstm.sqlest = (unsigned char  *)&sqlca;
     sqlstm.sqlety = (unsigned short)4352;

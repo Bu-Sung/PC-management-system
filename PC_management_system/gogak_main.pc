@@ -20,7 +20,7 @@ void gogakMain(char str_id[20]);
 void gogakUsgin();
 void gogakDelete();
 void gogakUpdate();
-void Select_tuple(char *no);
+int Select_tuple(char *no);
 void getBuyList();
 void pc_start(char str_id[20]);
 void insert_use(int select);
@@ -38,16 +38,14 @@ void buy_pro(char num[10], char number[10]);
 #include < windows.h >
 
 #define getch() _getch()
-char gogakID[20];
-char gogakNAME[10];
-char gogakPW[20];
-char gogakPHONE[20];
-int gogakUSING;
+
+int fail;
+  EXEC SQL WHENEVER SQLERROR DO fail = sql_error("\7ORACLE ERROR:\n");
 
 /*---------------   고객 메인 시작 함수 --------------------*/
 void gogakMain(char str_id[20]){
 	Select_tuple(str_id);
-	char gogak_select[10] = {NULL, };
+	char gogak_select[10];
 
 	while(1){
 		clrscr();
@@ -61,29 +59,7 @@ void gogakMain(char str_id[20]){
 		}else if (strcmp(gogak_select,"2") == 0){
 			pc_stop();
 		}else if (strcmp(gogak_select,"3") == 0){
-			char update_select[10]={NULL,};
-			while(1){
-				gotoxy(28,18);
-				printf("1. 수정 2. 삭제 0. 취소 >> "); 
-				gets_s(update_select, sizeof update_select);
-				if(strcmp(update_select,"1") == 0){
-					gogakUpdate();
-					break;
-				}else if(strcmp(update_select,"2") == 0){
-					gogakDelete();
-					break;
-				}else if(strcmp(update_select,"0") == 0){
-					break;
-				}else{	
-					gotoxy(50,19);
-					printf("잘 못 입력하였습니다");
-					getch();
-					gotoxy(50,19);
-					printf("                             ");
-					gotoxy(55,18);
-					printf("                 ");
-				}
-			}
+			gogakUpdate();
 		}else if (strcmp(gogak_select,"4") == 0){
 			gogakUsgin();
 		}else if (strcmp(gogak_select,"5") == 0){
@@ -117,7 +93,7 @@ void gogakUsgin(){
   		char dynstmt[1000];
 	EXEC SQL END DECLARE SECTION;
 	
-	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
 
 	/* 실행시킬 SQL 문장*/
    	sprintf(dynstmt,"select to_char(hnum) as hnum, to_char(seat) as seat, to_char(stime, 'YYYY-MM-DD')  as day, to_char(stime, 'HH24:MI') as stime , nvl2(etime, to_char(stime, 'HH24:MI'),to_char('사용 중')) as etime from use_history where gid='%s' order by hnum desc",gogakID); 
@@ -180,49 +156,6 @@ void gogakUsgin(){
    	EXEC SQL COMMIT ;
 }
 
-/*---------------   회원 탈퇴 함수 --------------------*/
-void gogakDelete(){
-
-	EXEC SQL BEGIN DECLARE SECTION;
-
-	   char dynstmt[1000];
-
-	EXEC SQL END DECLARE SECTION;
-	
-	
-	char  flag[10];
-
-   	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
-	
-	while(1){
-		gotoxy(23,20);
-		printf("정말 회원을 탈퇴하겠습니까?? (y/n) >> ");   
-		gets_s(flag, sizeof flag);
-   		if( strcmp(flag,"y") == 0|| strcmp(flag,"Y") == 0 ){
-       			sprintf(dynstmt,"delete from gogak where gid = '%s' ", gogakID);
-       			gotoxy(31,21);
-      		 	
-			EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
-			
-		       	EXEC SQL COMMIT WORK ; 
-			printf("탈퇴를 완료했습니다..\n");
-			getch();
-			start();
-			
-		   }
-   		else {
-			gotoxy(31,21);
-      		 	printf("탈퇴를 취소했습니다.");
-			getch();
-   		}
-		gotoxy(23,20);
-   		printf("                                                          ");   
-		gotoxy(31,21);
-     	 	printf("                                                           ");
-		break;
-	}
-}
-
 /*---------------   회원 정보 변경 함수 --------------------*/
 void gogakUpdate(){
 	EXEC SQL BEGIN DECLARE SECTION;
@@ -234,7 +167,7 @@ void gogakUpdate(){
    char  upw[50];
    char uphone[50];
   
-   EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+   //EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
   
   
 	clrscr();
@@ -266,8 +199,9 @@ while(1){
    
    gotoxy(26,19);
    printf("정말로 변경하시겠습니까? (y/n) >> ");
-   char flag = (char*) getch();
-   if( flag == 'y' || flag =='Y' ){
+   char flag[10];
+	gets_s(flag, sizeof flag);
+   if( strcmp(flag,"y")==0 || strcmp(flag,"Y")==0 ){
        			sprintf(dynstmt,"update gogak set gpw ='%s', phone='%s' where gid = '%s'", upw, uphone, gogakID);
        			
 			gotoxy(35,20);
@@ -311,7 +245,7 @@ void getBuyList(){
   		char dynstmt[1000];
 	EXEC SQL END DECLARE SECTION;
 	
-	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
 
 	/* 실행시킬 SQL 문장*/
    	sprintf(dynstmt,"select to_char(s.snum), to_char(p.pname), to_char(s.sales_date, 'YY-MM-DD HH24:MI'), to_char(s.samount),to_char(p.pprice) ,to_char(s.samount*p.pprice) from gogak g join sales s  on g.gid = s.gid join product p on s.pnum = p.pnum where g.gid = '%s' order by s.snum desc", gogakID); 
@@ -340,7 +274,7 @@ void getBuyList(){
 		
 
 		gotoxy(x,y);
-		printf("%s     %5s    %10s       %s       %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
+		printf("%-3s  %-10s %-15s       %s       %s      %s", snum.arr, pname.arr,date.arr,samount.arr, pprice.arr, total.arr);
 
 		y++;
 		count++;
@@ -381,7 +315,7 @@ void pc_start(char str_id[20]){
     
 	
     
-    EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+    //EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
    
     sprintf(dynstmt,"select u.seat, g.gname from use_history u join gogak g on u.gid = g.gid where etime is Null") ;
 	
@@ -464,7 +398,7 @@ EXEC SQL BEGIN DECLARE SECTION;
 
 
  	/* Register sql_error() as the error handler. */
-	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
 
 	sprintf(dynstmt,"insert into use_history values (nvl2((select max(hnum) from use_history),(select max(hnum)+1 from use_history),1), %d, '%s', default, default)",select  ,gogakID );
 	
@@ -488,7 +422,7 @@ void pc_stop(){
   		char dynstmt[1000];
 	EXEC SQL END DECLARE SECTION;
 	
-	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
 
 	/* 실행시킬 SQL 문장*/
    	sprintf(dynstmt,"select to_char(stime, 'YY-MM-DD HH24:MI'), round(to_number(sysdate-stime)*24*60), round((to_number(sysdate-stime)*24*60*100)/100)*100 from use_history where gid='%s' and etime is NULL", gogakID); 
@@ -554,7 +488,7 @@ void pc_exit(){
   		char dynstmt[1000];
 	EXEC SQL END DECLARE SECTION;
 	
-	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
 		sprintf(dynstmt,"update use_history set etime =systimestamp where gid ='%s'",  gogakID);
        			
 			
@@ -583,7 +517,7 @@ void search_pro(){
   		char dynstmt[1000];
 	EXEC SQL END DECLARE SECTION;
 	
-	EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
 
 	/* 실행시킬 SQL 문장*/
    	sprintf(dynstmt,"select * from product order by pnum asc"); 
@@ -614,8 +548,8 @@ void search_pro(){
 		
 		y++;
 		count++;
-		gotoxy(40,16);
-		printf("%d",page);
+		gotoxy(40,19);
+		printf("%-2d",page);
 		if( count == 5){
 			page++;
 			count = 0;
@@ -696,9 +630,6 @@ EXEC SQL BEGIN DECLARE SECTION;
 		
 	}else{
 		
-		int fail;
-   		EXEC SQL WHENEVER SQLERROR DO fail = sql_error("\7ORACLE ERROR:\n");
-  
   	
        		sprintf(dynstmt,"insert into sales values ((nvl2((select max(snum) from sales),(select max(snum)+1 from sales),1)),'%s','%s',default,to_number(%s))", num,  gogakID, number);
        		
@@ -713,16 +644,19 @@ EXEC SQL BEGIN DECLARE SECTION;
 			if(strcmp(buy,"y")==0 || strcmp(buy,"Y")==0){
 				EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
 				if(fail==1){
+					gotoxy(30,22);
+					printf("재고가 부족합니다!!");
+					getch();
 					gogakMain(gogakID);	
+				}else{
+			       		EXEC SQL COMMIT WORK ; 
+					gotoxy(30,22);
+					printf("                      ");
+					gotoxy(30,22);
+					printf("구매를 하였습니다.");
+					getch();
+					gogakMain(gogakID);
 				}
-		       		EXEC SQL COMMIT WORK ; 
-				gotoxy(30,22);
-				printf("                      ");
-				gotoxy(30,22);
-				printf("구매를 하였습니다.");
-				getch();
-				gogakMain(gogakID);
-			
 			} else if(strcmp(buy,"N")==0 || strcmp(buy,"N")==0){
 				gotoxy(30,22);
 				printf("구매를 취소했습니다.");
@@ -747,7 +681,7 @@ int getPrice(char pro[10]){
 EXEC SQL END DECLARE SECTION;
     
     
-    EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+    //EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
    
     sprintf(dynstmt,"SELECT pprice  FROM product where pnum = '%s'", pro) ;
 
@@ -775,7 +709,7 @@ EXEC SQL END DECLARE SECTION;
 }
 
 /*---------------   회원 정보 찾기 함수 --------------------*/
-void Select_tuple(char *no)
+int Select_tuple(char *no)
 {
 EXEC SQL BEGIN DECLARE SECTION;
     varchar  v_id[20];
@@ -788,10 +722,10 @@ EXEC SQL BEGIN DECLARE SECTION;
 EXEC SQL END DECLARE SECTION;
     
     
-    EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+    //EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
    
     sprintf(dynstmt,"SELECT gid, gpw, gname, phone,pc_using  FROM gogak where gid = '%s'", no) ;
-	printf("%s",dynstmt);
+	
 
     EXEC SQL PREPARE S FROM :dynstmt ;
 
@@ -814,11 +748,9 @@ EXEC SQL END DECLARE SECTION;
 	    strcpy(gogakNAME, v_name.arr);
              	    strcpy(gogakPHONE, v_phone.arr);
       	    gogakUSING = v_using;
-
+		return 1;
     }
-	
-    
-
+return 0;	
     EXEC SQL CLOSE c_cursor; 
    
 

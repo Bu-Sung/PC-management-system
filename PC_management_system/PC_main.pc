@@ -44,6 +44,11 @@ EXEC SQL END DECLARE SECTION;
 
 #define getch() _getch()
 
+//관리자 아이디
+char adminID[10] = "*admin";
+char adminPW[10] = "1234";
+char adminNAME[10] = "admin";
+
 
 /*---------------  main함수 --------------------*/
 
@@ -77,7 +82,7 @@ void DB_connect()
 }
 /*---------------   프로그램 시작 함수 --------------------*/
 void start(){
-	char main_select[10]={NULL,};
+	char main_select[10];
 	
 	
 	while(1){
@@ -89,6 +94,9 @@ void start(){
 			login();
 		}else if (strcmp(main_select,"2") == 0){
 			signUp();
+		}else if (strcmp(main_select,"exit") == 0 || strcmp(main_select,"EXIT") == 0){
+			gotoxy(25,18);
+			printf("프로그램을 종료합니다.");
 		}else{
 			gotoxy(37,16); //입력 창으로 가서 클리어 시키기
 			printf("        ");
@@ -124,45 +132,46 @@ EXEC SQL END DECLARE SECTION;
 		gotoxy(32,11);
 		gets_s(id_temp, sizeof id_temp);
 		if(strcmp(id_temp,"exit")==0 || strcmp(id_temp,"EXIT")==0){
-			start();
+			break;
 		}
 		gotoxy(32,13);
 		gets_s(pw_temp, sizeof pw_temp);
-		if(id_temp[0]=='*'){
-			sprintf(dynstmt,"SELECT eid, epw, ename FROM emp where eid='%s'",id_temp);
+		if(strcmp(id_temp,adminID)==0){
+			if(strcmp(pw_temp,adminPW)==0){
+				empMain();
+				break;
+			}else{
+				gotoxy(29,16);
+				printf("비밀번호 오류 입니다.");
+				
+				getch();
+			}	
 		}else{
 			sprintf(dynstmt,"SELECT gid, gpw, pc_using FROM gogak where gid='%s'",id_temp);
-		}
-		EXEC SQL PREPARE S FROM :dynstmt ;
 
-	   	/* cursor 선언 */
-   		EXEC SQL DECLARE c_cursor CURSOR FOR S ; 
+			EXEC SQL PREPARE S FROM :dynstmt ;
 
- 		 /* cursor open */
-	   	EXEC SQL OPEN c_cursor ; 
+		   	/* cursor 선언 */
+   			EXEC SQL DECLARE c_cursor CURSOR FOR S ; 
+		
+ 			 /* cursor open */
+	   		EXEC SQL OPEN c_cursor ; 
 
-	   	EXEC SQL WHENEVER NOT FOUND DO break;
+		   	EXEC SQL WHENEVER NOT FOUND DO break;
  
 		
-		for(;;){
-			co++;
-			if(id_temp[0]=='*'){
-				EXEC SQL FETCH c_cursor INTO :id, :pw;
-			}else{
+			for(;;){
+				co++;
 				EXEC SQL FETCH c_cursor INTO :id, :pw, :using;
-			}
+		
 			
-			id.arr[id.len] = '\0' ;
-			pw.arr[pw.len] = '\0';
+				id.arr[id.len] = '\0' ;
+				pw.arr[pw.len] = '\0';
 			
-			if(strcmp(pw_temp,pw.arr)==0){
-				gotoxy(28,16);
-				printf("로그인에 성공하였습니다.");
-				getch();
-				if(id_temp[0]=='*'){
-					empMain();
-					break;
-				}else{	
+				if(strcmp(pw_temp,pw.arr)==0){
+					gotoxy(28,16);
+					printf("로그인에 성공하였습니다.");
+					getch();
 					if(using == 0){
 						pc_start(id.arr);
 						gogakMain(id.arr);
@@ -170,15 +179,18 @@ EXEC SQL END DECLARE SECTION;
 						gogakMain(id.arr);
 					}
 					break;
-				}
-			}else{
-				gotoxy(29,16);
-				printf("비밀번호 오류 입니다.");
+
+				}else{
+					gotoxy(29,16);
+					printf("비밀번호 오류 입니다.");
 				
-				getch();
-			}	
+					getch();
+				}	
 			
+			}
+
 		}
+		
 		if(co==0){
 			gotoxy(27,16);
 			printf("아이디가 존재하지 않습니다.");
@@ -304,12 +316,8 @@ int sql_error(char *msg)
 	  buf_len = sizeof (err_msg);
 		    sqlglm(err_msg, &buf_len, &msg_len);
 	if(strstr(err_msg,"ORA-20003") != NULL){
-		gotoxy(30,22);
-		printf("재고가 부족합니다!!");
-		getch();
-		return 1;
-	}
-	else{  
+		return 1; //재고 없음
+	}else{  
 		    printf("%.*s\n", msg_len, err_msg);
 	}
     getch();

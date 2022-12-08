@@ -11,7 +11,14 @@ void login();
 void signUp();
 void start();
 int sql_error();
+void gogakUpdate();
 void pc_start(char str_id[20]);
 void clrscr(void);
 void pc_start();
 #define SEAT 10 //PC ÁÂ¼® ¼ö
+int Select_tuple(char* no);
+char gogakID[20];
+char gogakNAME[10];
+char gogakPW[20];
+char gogakPHONE[20];
+int gogakUSING;
