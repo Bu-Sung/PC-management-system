@@ -135,6 +135,9 @@ void gogakUsgin(){
 					if(key==77){
 						break;
 					}
+					
+				}else if( key==13){
+					return;
 				}
 			}
 			}

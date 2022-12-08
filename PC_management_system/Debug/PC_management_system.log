@@ -1,3 +1,6 @@
 ﻿  emp_main.c
 C:\Users\User\Desktop\PC_management_system\PC_management_system\emp_main.c(358,6): warning C4101: 'exit' :참조되지 않은 지역 변수입니다.
+  gogak_main.c
+  PC_main.c
+  코드를 생성하고 있습니다...
   PC_management_system.vcxproj -> C:\Users\User\Desktop\PC_management_system\Debug\PC_management_system.exe
