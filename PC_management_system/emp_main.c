@@ -135,28 +135,33 @@ typedef struct { unsigned short len; unsigned char arr[1]; } varchar;
 /* cud (compilation unit data) array */
 static const short sqlcud0[] =
 {13,4130,1,0,0,
-5,0,0,1,0,0,17,104,0,0,1,1,0,1,0,1,97,0,0,
-24,0,0,1,0,0,45,110,0,0,0,0,0,1,0,
-39,0,0,1,0,0,13,117,0,0,7,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
+5,0,0,1,0,0,17,105,0,0,1,1,0,1,0,1,97,0,0,
+24,0,0,1,0,0,45,111,0,0,0,0,0,1,0,
+39,0,0,1,0,0,13,119,0,0,7,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
 0,0,2,9,0,0,
-82,0,0,1,0,0,15,162,0,0,0,0,0,1,0,
-97,0,0,2,0,0,29,164,0,0,0,0,0,1,0,
-112,0,0,1,0,0,17,203,0,0,1,1,0,1,0,1,97,0,0,
-131,0,0,1,0,0,45,209,0,0,0,0,0,1,0,
-146,0,0,1,0,0,13,217,0,0,8,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
+82,0,0,1,0,0,15,163,0,0,0,0,0,1,0,
+97,0,0,2,0,0,29,165,0,0,0,0,0,1,0,
+112,0,0,1,0,0,17,204,0,0,1,1,0,1,0,1,97,0,0,
+131,0,0,1,0,0,45,210,0,0,0,0,0,1,0,
+146,0,0,1,0,0,13,218,0,0,8,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
 0,0,2,9,0,0,2,9,0,0,
-193,0,0,1,0,0,15,266,0,0,0,0,0,1,0,
-208,0,0,3,0,0,29,268,0,0,0,0,0,1,0,
-223,0,0,1,0,0,17,290,0,0,1,1,0,1,0,1,97,0,0,
-242,0,0,1,0,0,45,294,0,0,0,0,0,1,0,
-257,0,0,1,0,0,13,303,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,
-288,0,0,1,0,0,15,346,0,0,0,0,0,1,0,
-303,0,0,4,0,0,24,405,0,0,1,1,0,1,0,1,97,0,0,
-322,0,0,5,0,0,29,406,0,0,0,0,0,1,0,
-337,0,0,1,0,0,17,472,0,0,1,1,0,1,0,1,97,0,0,
-356,0,0,1,0,0,45,476,0,0,0,0,0,1,0,
-371,0,0,1,0,0,13,486,0,0,2,0,0,1,0,2,3,0,0,2,9,0,0,
-394,0,0,1,0,0,15,503,0,0,0,0,0,1,0,
+193,0,0,1,0,0,15,267,0,0,0,0,0,1,0,
+208,0,0,3,0,0,29,269,0,0,0,0,0,1,0,
+223,0,0,1,0,0,17,291,0,0,1,1,0,1,0,1,97,0,0,
+242,0,0,1,0,0,45,295,0,0,0,0,0,1,0,
+257,0,0,1,0,0,13,304,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,
+288,0,0,1,0,0,15,344,0,0,0,0,0,1,0,
+303,0,0,4,0,0,24,413,0,0,1,1,0,1,0,1,97,0,0,
+322,0,0,5,0,0,29,414,0,0,0,0,0,1,0,
+337,0,0,1,0,0,17,480,0,0,1,1,0,1,0,1,97,0,0,
+356,0,0,1,0,0,45,484,0,0,0,0,0,1,0,
+371,0,0,1,0,0,13,494,0,0,2,0,0,1,0,2,3,0,0,2,9,0,0,
+394,0,0,1,0,0,15,511,0,0,0,0,0,1,0,
+409,0,0,1,0,0,17,534,0,0,1,1,0,1,0,1,97,0,0,
+428,0,0,1,0,0,45,540,0,0,0,0,0,1,0,
+443,0,0,1,0,0,13,547,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,2,3,0,0,
+474,0,0,1,0,0,15,575,0,0,0,0,0,1,0,
+489,0,0,6,0,0,29,577,0,0,0,0,0,1,0,
 };
 
 
@@ -185,6 +190,7 @@ void gogak_list();
 void UOrD();
 void gogakD();
 int check_gogak();
+void food_list();
 
 // win32 Visual C 2010 이상컴파일시 추가
 #define getch() _getch()
@@ -208,7 +214,7 @@ void empMain(){
 		gotoxy(32,17);
 		gets_s(emp_select, sizeof emp_select);
 		if( strcmp(emp_select,"1") == 0){
-			printf("%s", emp_select);
+			food_list();
 		}else if (strcmp(emp_select,"2") == 0){
 			gogak_list();
 		}else if (strcmp(emp_select,"3") == 0){
@@ -349,7 +355,8 @@ struct { unsigned short len; unsigned char arr[100]; } etime;
 
 	/* EXEC SQL WHENEVER NOT FOUND DO break; */ 
 
-
+	int exit;
+	char c;
 	x = 7;
   	y = 13 ;
   	for (;;){
@@ -461,7 +468,6 @@ struct { unsigned short len; unsigned char arr[100]; } etime;
 		if( count == 5){
 			page++;
 			count = 0;
-			char c;
    			 while (1) {
         				if (_kbhit()) {             
            					 c = _getch();        
@@ -482,7 +488,7 @@ struct { unsigned short len; unsigned char arr[100]; } etime;
 
    	 }
 	gotoxy(71,18);
-    	printf("(END)");
+	printf("(END)");
 	getch();
 
     	/* Close the cursor. */
@@ -844,7 +850,7 @@ struct { unsigned short len; unsigned char arr[100]; } total;
 void gogak_list(){
 clrscr();
 	print_screen("gogak_list.txt");
-		int page=1, count=0;
+		
 	/* EXEC SQL BEGIN DECLARE SECTION; */ 
 
    		/* varchar v_id[20]; */ 
@@ -869,77 +875,77 @@ struct { unsigned short len; unsigned char arr[20]; } v_phone;
    // EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
    
     sprintf(dynstmt,"select * from gogak") ;
-	
-    /* EXEC SQL PREPARE S FROM :dynstmt ; */ 
+		int page=1, count=0;
+   		 /* EXEC SQL PREPARE S FROM :dynstmt ; */ 
 
 {
-    struct sqlexd sqlstm;
-    sqlstm.sqlvsn = 13;
-    sqlstm.arrsiz = 8;
-    sqlstm.sqladtp = &sqladt;
-    sqlstm.sqltdsp = &sqltds;
-    sqlstm.stmt = "";
-    sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )223;
-    sqlstm.cud = sqlcud0;
-    sqlstm.sqlest = (unsigned char  *)&sqlca;
-    sqlstm.sqlety = (unsigned short)4352;
-    sqlstm.occurs = (unsigned int  )0;
-    sqlstm.sqhstv[0] = (         void  *)dynstmt;
-    sqlstm.sqhstl[0] = (unsigned int  )1000;
-    sqlstm.sqhsts[0] = (         int  )0;
-    sqlstm.sqindv[0] = (         void  *)0;
-    sqlstm.sqinds[0] = (         int  )0;
-    sqlstm.sqharm[0] = (unsigned int  )0;
-    sqlstm.sqadto[0] = (unsigned short )0;
-    sqlstm.sqtdso[0] = (unsigned short )0;
-    sqlstm.sqphsv = sqlstm.sqhstv;
-    sqlstm.sqphsl = sqlstm.sqhstl;
-    sqlstm.sqphss = sqlstm.sqhsts;
-    sqlstm.sqpind = sqlstm.sqindv;
-    sqlstm.sqpins = sqlstm.sqinds;
-    sqlstm.sqparm = sqlstm.sqharm;
-    sqlstm.sqparc = sqlstm.sqharc;
-    sqlstm.sqpadto = sqlstm.sqadto;
-    sqlstm.sqptdso = sqlstm.sqtdso;
-    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
-    if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+      struct sqlexd sqlstm;
+      sqlstm.sqlvsn = 13;
+      sqlstm.arrsiz = 8;
+      sqlstm.sqladtp = &sqladt;
+      sqlstm.sqltdsp = &sqltds;
+      sqlstm.stmt = "";
+      sqlstm.iters = (unsigned int  )1;
+      sqlstm.offset = (unsigned int  )223;
+      sqlstm.cud = sqlcud0;
+      sqlstm.sqlest = (unsigned char  *)&sqlca;
+      sqlstm.sqlety = (unsigned short)4352;
+      sqlstm.occurs = (unsigned int  )0;
+      sqlstm.sqhstv[0] = (         void  *)dynstmt;
+      sqlstm.sqhstl[0] = (unsigned int  )1000;
+      sqlstm.sqhsts[0] = (         int  )0;
+      sqlstm.sqindv[0] = (         void  *)0;
+      sqlstm.sqinds[0] = (         int  )0;
+      sqlstm.sqharm[0] = (unsigned int  )0;
+      sqlstm.sqadto[0] = (unsigned short )0;
+      sqlstm.sqtdso[0] = (unsigned short )0;
+      sqlstm.sqphsv = sqlstm.sqhstv;
+      sqlstm.sqphsl = sqlstm.sqhstl;
+      sqlstm.sqphss = sqlstm.sqhsts;
+      sqlstm.sqpind = sqlstm.sqindv;
+      sqlstm.sqpins = sqlstm.sqinds;
+      sqlstm.sqparm = sqlstm.sqharm;
+      sqlstm.sqparc = sqlstm.sqharc;
+      sqlstm.sqpadto = sqlstm.sqadto;
+      sqlstm.sqptdso = sqlstm.sqtdso;
+      sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+      if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
 }
 
 
 
-    /* EXEC SQL DECLARE q_cursor CURSOR FOR S ; */ 
+  		  /* EXEC SQL DECLARE q_cursor CURSOR FOR S ; */ 
  
 
-    /* EXEC SQL OPEN q_cursor ; */ 
+  		  /* EXEC SQL OPEN q_cursor ; */ 
 
 {
-    struct sqlexd sqlstm;
-    sqlstm.sqlvsn = 13;
-    sqlstm.arrsiz = 8;
-    sqlstm.sqladtp = &sqladt;
-    sqlstm.sqltdsp = &sqltds;
-    sqlstm.stmt = "";
-    sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )242;
-    sqlstm.selerr = (unsigned short)1;
-    sqlstm.sqlpfmem = (unsigned int  )0;
-    sqlstm.cud = sqlcud0;
-    sqlstm.sqlest = (unsigned char  *)&sqlca;
-    sqlstm.sqlety = (unsigned short)4352;
-    sqlstm.occurs = (unsigned int  )0;
-    sqlstm.sqcmod = (unsigned int )0;
-    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
-    if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+      struct sqlexd sqlstm;
+      sqlstm.sqlvsn = 13;
+      sqlstm.arrsiz = 8;
+      sqlstm.sqladtp = &sqladt;
+      sqlstm.sqltdsp = &sqltds;
+      sqlstm.stmt = "";
+      sqlstm.iters = (unsigned int  )1;
+      sqlstm.offset = (unsigned int  )242;
+      sqlstm.selerr = (unsigned short)1;
+      sqlstm.sqlpfmem = (unsigned int  )0;
+      sqlstm.cud = sqlcud0;
+      sqlstm.sqlest = (unsigned char  *)&sqlca;
+      sqlstm.sqlety = (unsigned short)4352;
+      sqlstm.occurs = (unsigned int  )0;
+      sqlstm.sqcmod = (unsigned int )0;
+      sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+      if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
 }
 
  
 
   
-    /* EXEC SQL WHENEVER NOT FOUND do break; */ 
+  		  /* EXEC SQL WHENEVER NOT FOUND do break; */ 
 
-	int x = 14;
-	int y = 10;
+			int x = 14;
+			int y = 10;
 	
     for(;;)
     {
@@ -1021,6 +1027,7 @@ struct { unsigned short len; unsigned char arr[20]; } v_phone;
 		count++;
 		gotoxy(39,16);
 		printf("%-2d",page);
+		gotoxy(71,22);
 		if( count == 5){
 			page++;
 			count = 0;
@@ -1045,36 +1052,42 @@ struct { unsigned short len; unsigned char arr[20]; } v_phone;
 			}
 			y = 11 ;
 		}
-    }	
-	gotoxy(66,17);
-    	printf("(END)");
-	UOrD();
-	getch();
-    /* EXEC SQL CLOSE q_cursor; */ 
+    	}	
+	/* EXEC SQL CLOSE q_cursor; */ 
 
 {
-    struct sqlexd sqlstm;
-    sqlstm.sqlvsn = 13;
-    sqlstm.arrsiz = 8;
-    sqlstm.sqladtp = &sqladt;
-    sqlstm.sqltdsp = &sqltds;
-    sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )288;
-    sqlstm.cud = sqlcud0;
-    sqlstm.sqlest = (unsigned char  *)&sqlca;
-    sqlstm.sqlety = (unsigned short)4352;
-    sqlstm.occurs = (unsigned int  )0;
-    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
-    if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+ struct sqlexd sqlstm;
+ sqlstm.sqlvsn = 13;
+ sqlstm.arrsiz = 8;
+ sqlstm.sqladtp = &sqladt;
+ sqlstm.sqltdsp = &sqltds;
+ sqlstm.iters = (unsigned int  )1;
+ sqlstm.offset = (unsigned int  )288;
+ sqlstm.cud = sqlcud0;
+ sqlstm.sqlest = (unsigned char  *)&sqlca;
+ sqlstm.sqlety = (unsigned short)4352;
+ sqlstm.occurs = (unsigned int  )0;
+ sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+ if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
 }
 
  
+	
+	gotoxy(66,17);
+    	printf("(END)");
+	gotoxy(62,22);
+	printf("                            ");
+	gotoxy(62,22);
+	printf("나가기");
+	UOrD();
+    
 }
 /*---------------   사용자 변경 또는 삭제 조회 함수 --------------------*/
 void UOrD(){
 	char change_n[10];
 	while(1){
-		gotoxy(51,18);
+		gotoxy(32,18);
+		printf("1. 수정 2. 삭제 >> ");
 		gets_s(change_n, sizeof change_n);
 		if(change_n[0] == '\0' ) {
     			break;
@@ -1413,4 +1426,236 @@ struct { unsigned short len; unsigned char arr[20]; } v_name;
 }
 
  
+}
+
+/*---------------   음식 관리 함수 --------------------*/
+void food_list(){
+	clrscr();
+	print_screen("food_list.txt");
+	
+	int x,y,count=0, page=0;
+	/* EXEC SQL BEGIN DECLARE SECTION; */ 
+
+   		/* varchar pnum[100]; */ 
+struct { unsigned short len; unsigned char arr[100]; } pnum;
+
+		/* varchar pname[100]; */ 
+struct { unsigned short len; unsigned char arr[100]; } pname;
+
+		int pamount;
+		int pprice;
+
+  		char dynstmt[1000];
+	/* EXEC SQL END DECLARE SECTION; */ 
+
+	
+	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+
+	/* 실행시킬 SQL 문장*/
+   	sprintf(dynstmt,"select * from product order by pnum asc"); 
+
+	/* EXEC SQL PREPARE S FROM :dynstmt ; */ 
+
+{
+ struct sqlexd sqlstm;
+ sqlstm.sqlvsn = 13;
+ sqlstm.arrsiz = 8;
+ sqlstm.sqladtp = &sqladt;
+ sqlstm.sqltdsp = &sqltds;
+ sqlstm.stmt = "";
+ sqlstm.iters = (unsigned int  )1;
+ sqlstm.offset = (unsigned int  )409;
+ sqlstm.cud = sqlcud0;
+ sqlstm.sqlest = (unsigned char  *)&sqlca;
+ sqlstm.sqlety = (unsigned short)4352;
+ sqlstm.occurs = (unsigned int  )0;
+ sqlstm.sqhstv[0] = (         void  *)dynstmt;
+ sqlstm.sqhstl[0] = (unsigned int  )1000;
+ sqlstm.sqhsts[0] = (         int  )0;
+ sqlstm.sqindv[0] = (         void  *)0;
+ sqlstm.sqinds[0] = (         int  )0;
+ sqlstm.sqharm[0] = (unsigned int  )0;
+ sqlstm.sqadto[0] = (unsigned short )0;
+ sqlstm.sqtdso[0] = (unsigned short )0;
+ sqlstm.sqphsv = sqlstm.sqhstv;
+ sqlstm.sqphsl = sqlstm.sqhstl;
+ sqlstm.sqphss = sqlstm.sqhsts;
+ sqlstm.sqpind = sqlstm.sqindv;
+ sqlstm.sqpins = sqlstm.sqinds;
+ sqlstm.sqparm = sqlstm.sqharm;
+ sqlstm.sqparc = sqlstm.sqharc;
+ sqlstm.sqpadto = sqlstm.sqadto;
+ sqlstm.sqptdso = sqlstm.sqtdso;
+ sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+ if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+
+
+	/* cursor 선언 */
+	/* EXEC SQL DECLARE z_cursor CURSOR FOR S ; */ 
+ 
+	
+	/* cursor open */
+	/* EXEC SQL OPEN z_cursor ; */ 
+
+{
+ struct sqlexd sqlstm;
+ sqlstm.sqlvsn = 13;
+ sqlstm.arrsiz = 8;
+ sqlstm.sqladtp = &sqladt;
+ sqlstm.sqltdsp = &sqltds;
+ sqlstm.stmt = "";
+ sqlstm.iters = (unsigned int  )1;
+ sqlstm.offset = (unsigned int  )428;
+ sqlstm.selerr = (unsigned short)1;
+ sqlstm.sqlpfmem = (unsigned int  )0;
+ sqlstm.cud = sqlcud0;
+ sqlstm.sqlest = (unsigned char  *)&sqlca;
+ sqlstm.sqlety = (unsigned short)4352;
+ sqlstm.occurs = (unsigned int  )0;
+ sqlstm.sqcmod = (unsigned int )0;
+ sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+ if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+ 
+
+	/* EXEC SQL WHENEVER NOT FOUND DO break; */ 
+
+
+	x = 18;
+  	y = 10;
+  	for (;;){
+		/* EXEC SQL FETCH z_cursor INTO :pnum, :pname, :pamount, :pprice; */ 
+
+{
+  struct sqlexd sqlstm;
+  sqlstm.sqlvsn = 13;
+  sqlstm.arrsiz = 8;
+  sqlstm.sqladtp = &sqladt;
+  sqlstm.sqltdsp = &sqltds;
+  sqlstm.iters = (unsigned int  )1;
+  sqlstm.offset = (unsigned int  )443;
+  sqlstm.selerr = (unsigned short)1;
+  sqlstm.sqlpfmem = (unsigned int  )0;
+  sqlstm.cud = sqlcud0;
+  sqlstm.sqlest = (unsigned char  *)&sqlca;
+  sqlstm.sqlety = (unsigned short)4352;
+  sqlstm.occurs = (unsigned int  )0;
+  sqlstm.sqfoff = (           int )0;
+  sqlstm.sqfmod = (unsigned int )2;
+  sqlstm.sqhstv[0] = (         void  *)&pnum;
+  sqlstm.sqhstl[0] = (unsigned int  )102;
+  sqlstm.sqhsts[0] = (         int  )0;
+  sqlstm.sqindv[0] = (         void  *)0;
+  sqlstm.sqinds[0] = (         int  )0;
+  sqlstm.sqharm[0] = (unsigned int  )0;
+  sqlstm.sqadto[0] = (unsigned short )0;
+  sqlstm.sqtdso[0] = (unsigned short )0;
+  sqlstm.sqhstv[1] = (         void  *)&pname;
+  sqlstm.sqhstl[1] = (unsigned int  )102;
+  sqlstm.sqhsts[1] = (         int  )0;
+  sqlstm.sqindv[1] = (         void  *)0;
+  sqlstm.sqinds[1] = (         int  )0;
+  sqlstm.sqharm[1] = (unsigned int  )0;
+  sqlstm.sqadto[1] = (unsigned short )0;
+  sqlstm.sqtdso[1] = (unsigned short )0;
+  sqlstm.sqhstv[2] = (         void  *)&pamount;
+  sqlstm.sqhstl[2] = (unsigned int  )sizeof(int);
+  sqlstm.sqhsts[2] = (         int  )0;
+  sqlstm.sqindv[2] = (         void  *)0;
+  sqlstm.sqinds[2] = (         int  )0;
+  sqlstm.sqharm[2] = (unsigned int  )0;
+  sqlstm.sqadto[2] = (unsigned short )0;
+  sqlstm.sqtdso[2] = (unsigned short )0;
+  sqlstm.sqhstv[3] = (         void  *)&pprice;
+  sqlstm.sqhstl[3] = (unsigned int  )sizeof(int);
+  sqlstm.sqhsts[3] = (         int  )0;
+  sqlstm.sqindv[3] = (         void  *)0;
+  sqlstm.sqinds[3] = (         int  )0;
+  sqlstm.sqharm[3] = (unsigned int  )0;
+  sqlstm.sqadto[3] = (unsigned short )0;
+  sqlstm.sqtdso[3] = (unsigned short )0;
+  sqlstm.sqphsv = sqlstm.sqhstv;
+  sqlstm.sqphsl = sqlstm.sqhstl;
+  sqlstm.sqphss = sqlstm.sqhsts;
+  sqlstm.sqpind = sqlstm.sqindv;
+  sqlstm.sqpins = sqlstm.sqinds;
+  sqlstm.sqparm = sqlstm.sqharm;
+  sqlstm.sqparc = sqlstm.sqharc;
+  sqlstm.sqpadto = sqlstm.sqadto;
+  sqlstm.sqptdso = sqlstm.sqtdso;
+  sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+  if (sqlca.sqlcode == 1403) break;
+  if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+
+		
+		pnum.arr[pnum.len] = '\0' ;
+		pname.arr[pname.len] = '\0' ;
+	
+
+		gotoxy(x,y);
+		printf("%s   %15s            %-7d    %-3d", pnum.arr, pname.arr ,pprice,pamount);
+
+		y++;
+		count++;
+		
+		if( count == 5){
+			count = 0;
+			getch();
+			gotoxy(8,11); //이전 화면 부분 클리어	
+	            	  	for(int i= 0; i < 5; i++){
+				printf("                                                                                             \n");
+			}
+			y = 11 ;
+		}
+
+   	 }
+	gotoxy(71,18);
+    	printf("(END)");
+	getch();
+
+    	/* Close the cursor. */
+   	/* EXEC SQL CLOSE z_cursor; */ 
+
+{
+    struct sqlexd sqlstm;
+    sqlstm.sqlvsn = 13;
+    sqlstm.arrsiz = 8;
+    sqlstm.sqladtp = &sqladt;
+    sqlstm.sqltdsp = &sqltds;
+    sqlstm.iters = (unsigned int  )1;
+    sqlstm.offset = (unsigned int  )474;
+    sqlstm.cud = sqlcud0;
+    sqlstm.sqlest = (unsigned char  *)&sqlca;
+    sqlstm.sqlety = (unsigned short)4352;
+    sqlstm.occurs = (unsigned int  )0;
+    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+    if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+
+
+   	/* EXEC SQL COMMIT ; */ 
+
+{
+    struct sqlexd sqlstm;
+    sqlstm.sqlvsn = 13;
+    sqlstm.arrsiz = 8;
+    sqlstm.sqladtp = &sqladt;
+    sqlstm.sqltdsp = &sqltds;
+    sqlstm.iters = (unsigned int  )1;
+    sqlstm.offset = (unsigned int  )489;
+    sqlstm.cud = sqlcud0;
+    sqlstm.sqlest = (unsigned char  *)&sqlca;
+    sqlstm.sqlety = (unsigned short)4352;
+    sqlstm.occurs = (unsigned int  )0;
+    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+    if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+
 }

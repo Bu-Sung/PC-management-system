@@ -358,35 +358,36 @@ void pc_start(char str_id[20]){
 		gotoxy(22,18);
 		printf("예약하실 좌석을 선택해 주세요 >> ");
 		gets_s(seat_select,sizeof seat_select);
-		
+	
 		if(strcmp(seat_select,"exit")==0 || strcmp(seat_select,"EXIT")==0){
 			break;
-		}
-		if((seat_select[1]=='\0' && strcmp(seat_select,"[0-9]")) || strcmp(seat_select, "10") == 0) {
-			int seat = seat_select[0] - 48;
-			if(arr[seat-1] == 'y'){
-				insert_use(seat);
-				gotoxy(27,20);
-				printf("예약이 완료되었습니다.");
-				getch();
-				break;
-			}else if(arr[seat-1] == 'n'){
-				gotoxy(26,20);
-				printf("이미 예약된 좌석입니다..");
-				getch();
-			}
 		}else{
-			gotoxy(26,19);
-			printf("잘 못 입력하셨습니다..");
-			getch();
+			if((seat_select[1]=='\0' && strcmp(seat_select,"[0-9]")) || strcmp(seat_select, "10") == 0) {
+				int seat = seat_select[0] - 48;
+				if(arr[seat-1] == 'y'){
+					insert_use(seat);
+					gotoxy(27,20);
+					printf("예약이 완료되었습니다.");
+					getch();
+					break;
+				}else if(arr[seat-1] == 'n'){
+					gotoxy(26,20);
+					printf("이미 예약된 좌석입니다..");
+					getch();
+				}
+			}else{
+				gotoxy(26,19);
+				printf("잘 못 입력하셨습니다..");
+				getch();
 		
+			}
+			gotoxy(26,19);
+			printf("                                                    ");
+			gotoxy(26,20);
+			printf("                                           ");
+			gotoxy(22,18);
+			printf("                                                            ");
 		}
-		gotoxy(26,19);
-		printf("                                                    ");
-		gotoxy(26,20);
-		printf("                                           ");
-		gotoxy(22,18);
-		printf("                                                            ");
 	}	
 
 }
@@ -548,7 +549,7 @@ void search_pro(){
 		
 		y++;
 		count++;
-		gotoxy(40,19);
+		gotoxy(40,16);
 		printf("%-2d",page);
 		if( count == 5){
 			page++;

@@ -15,6 +15,7 @@
 #include <sqlda.h>
 #include <sqlca.h>
 #include <sqlcpr.h>
+
 void empMain();
 void search_Use_All();
 void seach_Buy_All();
@@ -23,6 +24,8 @@ void gogak_list();
 void UOrD();
 void gogakD();
 int check_gogak();
+void food_list();
+int search_food();
 
 // win32 Visual C 2010 이상컴파일시 추가
 #define getch() _getch()
@@ -45,7 +48,7 @@ void empMain(){
 		gotoxy(32,17);
 		gets_s(emp_select, sizeof emp_select);
 		if( strcmp(emp_select,"1") == 0){
-			printf("%s", emp_select);
+			food_list();
 		}else if (strcmp(emp_select,"2") == 0){
 			gogak_list();
 		}else if (strcmp(emp_select,"3") == 0){
@@ -110,7 +113,8 @@ void search_Use_All(){
 	EXEC SQL OPEN b_cursor ; 
 
 	EXEC SQL WHENEVER NOT FOUND DO break;
-
+	int exit;
+	char c;
 	x = 7;
   	y = 13 ;
   	for (;;){
@@ -134,7 +138,6 @@ void search_Use_All(){
 		if( count == 5){
 			page++;
 			count = 0;
-			char c;
    			 while (1) {
         				if (_kbhit()) {             
            					 c = _getch();        
@@ -155,7 +158,7 @@ void search_Use_All(){
 
    	 }
 	gotoxy(71,18);
-    	printf("(END)");
+	printf("(END)");
 	getch();
 
     	/* Close the cursor. */
@@ -271,7 +274,7 @@ clrscr();
 void gogak_list(){
 clrscr();
 	print_screen("gogak_list.txt");
-		int page=1, count=0;
+		
 	EXEC SQL BEGIN DECLARE SECTION;
    		varchar v_id[20];
 		varchar v_pw[20];
@@ -286,17 +289,17 @@ clrscr();
    // EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
    
     sprintf(dynstmt,"select * from gogak") ;
-	
-    EXEC SQL PREPARE S FROM :dynstmt ;
+		int page=1, count=0;
+   		 EXEC SQL PREPARE S FROM :dynstmt ;
 
-    EXEC SQL DECLARE q_cursor CURSOR FOR S ; 
+  		  EXEC SQL DECLARE q_cursor CURSOR FOR S ; 
 
-    EXEC SQL OPEN q_cursor ; 
+  		  EXEC SQL OPEN q_cursor ; 
 
   
-    EXEC SQL WHENEVER NOT FOUND do break;
-	int x = 14;
-	int y = 10;
+  		  EXEC SQL WHENEVER NOT FOUND do break;
+			int x = 14;
+			int y = 10;
 	
     for(;;)
     {
@@ -314,6 +317,7 @@ clrscr();
 		count++;
 		gotoxy(39,16);
 		printf("%-2d",page);
+		gotoxy(71,22);
 		if( count == 5){
 			page++;
 			count = 0;
@@ -338,18 +342,24 @@ clrscr();
 			}
 			y = 11 ;
 		}
-    }	
+    	}	
+	EXEC SQL CLOSE q_cursor; 
+	
 	gotoxy(66,17);
     	printf("(END)");
+	gotoxy(62,22);
+	printf("                            ");
+	gotoxy(62,22);
+	printf("나가기");
 	UOrD();
-	getch();
-    EXEC SQL CLOSE q_cursor; 
+    
 }
 /*---------------   사용자 변경 또는 삭제 조회 함수 --------------------*/
 void UOrD(){
 	char change_n[10];
 	while(1){
-		gotoxy(51,18);
+		gotoxy(32,18);
+		printf("1. 수정 2. 삭제 >> ");
 		gets_s(change_n, sizeof change_n);
 		if(change_n[0] == '\0' ) {
     			break;
@@ -501,4 +511,105 @@ void pc_start_now(){
     }	
 	getch();
     EXEC SQL CLOSE w_cursor; 
+}
+
+/*---------------   음식 관리 함수 --------------------*/
+void food_list(){
+	clrscr();
+	print_screen("food_list.txt");
+	
+	int x,y,count=0, page=0;
+	EXEC SQL BEGIN DECLARE SECTION;
+   		varchar pnum[100];
+		varchar pname[100];
+		int pamount;
+		int pprice;
+
+  		char dynstmt[1000];
+	EXEC SQL END DECLARE SECTION;
+	
+	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+
+	/* 실행시킬 SQL 문장*/
+   	sprintf(dynstmt,"select * from product order by pnum asc"); 
+
+	EXEC SQL PREPARE S FROM :dynstmt ;
+
+	/* cursor 선언 */
+	EXEC SQL DECLARE z_cursor CURSOR FOR S ; 
+	
+	/* cursor open */
+	EXEC SQL OPEN z_cursor ; 
+
+	EXEC SQL WHENEVER NOT FOUND DO break;
+
+	x = 18;
+  	y = 10;
+  	for (;;){
+		EXEC SQL FETCH z_cursor INTO :pnum, :pname, :pamount, :pprice;
+		
+		pnum.arr[pnum.len] = '\0' ;
+		pname.arr[pname.len] = '\0' ;
+	
+
+		gotoxy(x,y);
+		printf("%s   %15s            %-7d    %-3d", pnum.arr, pname.arr ,pprice,pamount);
+
+		y++;
+		count++;
+		
+		if( count == 5){
+			count = 0;
+			getch();
+			gotoxy(8,11); //이전 화면 부분 클리어	
+	            	  	for(int i= 0; i < 5; i++){
+				printf("                                                                                             \n");
+			}
+			y = 11 ;
+		}
+
+   	 }
+	gotoxy(71,18);
+    	printf("(END)");
+	getch();
+
+    	/* Close the cursor. */
+   	EXEC SQL CLOSE z_cursor;
+
+   	EXEC SQL COMMIT ;
+}
+
+/*---------------   음식 등록 함수 --------------------*/
+void input_food(){
+	clrscr();
+	print_screen("foodinfo.txt");
+	
+	
+	
+}
+/*---------------   음식 검색
+ 함수 --------------------*/
+int search_food(char food_name[20]){
+
+	/* 실행시킬 SQL 문장*/
+   	sprintf(dynstmt,"select * from product where = %s", food_name); 
+
+	EXEC SQL PREPARE S FROM :dynstmt ;
+
+	/* cursor 선언 */
+	EXEC SQL DECLARE z_cursor CURSOR FOR S ; 
+	
+	/* cursor open */
+	EXEC SQL OPEN z_cursor ; 
+
+	EXEC SQL WHENEVER NOT FOUND DO break;
+
+  	for (;;){
+		EXEC SQL FETCH z_cursor INTO :pnum, :pname, :pamount, :pprice;
+		return 1;
+   	 }
+	
+    	/* Close the cursor. */
+   	EXEC SQL CLOSE z_cursor;
+	return 0;	
 }
