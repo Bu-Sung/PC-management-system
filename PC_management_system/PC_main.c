@@ -947,7 +947,7 @@ int sql_error(char *msg)
 	if(strstr(err_msg,"ORA-20003") != NULL){
 		return 1; //재고 없음
 	}else{  
-		    printf("%.*s\n", msg_len, err_msg);
+		   // printf("%.*s\n", msg_len, err_msg);
 	}
     getch();
    return 0;
