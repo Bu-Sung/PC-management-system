@@ -2,5 +2,6 @@
   gogak_main.c
   PC_main.c
   코드를 생성하고 있습니다...
-C:\Users\User\Desktop\PC-management-system\PC_management_system\gogak_main.c(1830): warning C4715: 'choose_food': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\User\Desktop\PC-management-system\PC_management_system\gogak_main.c(1826): warning C4715: 'choose_food': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\User\Desktop\PC-management-system\PC_management_system\emp_main.c(1789): warning C4715: 'choose_ufood': 모든 제어 경로에서 값을 반환하지는 않습니다.
   PC_management_system.vcxproj -> C:\Users\User\Desktop\PC-management-system\Debug\PC_management_system.exe

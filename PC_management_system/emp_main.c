@@ -135,37 +135,43 @@ typedef struct { unsigned short len; unsigned char arr[1]; } varchar;
 /* cud (compilation unit data) array */
 static const short sqlcud0[] =
 {13,4130,1,0,0,
-5,0,0,1,0,0,17,107,0,0,1,1,0,1,0,1,97,0,0,
-24,0,0,1,0,0,45,113,0,0,0,0,0,1,0,
-39,0,0,1,0,0,13,120,0,0,7,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
+5,0,0,1,0,0,17,137,0,0,1,1,0,1,0,1,97,0,0,
+24,0,0,1,0,0,45,143,0,0,0,0,0,1,0,
+39,0,0,1,0,0,13,150,0,0,7,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
 0,0,2,9,0,0,
-82,0,0,1,0,0,15,164,0,0,0,0,0,1,0,
-97,0,0,2,0,0,29,166,0,0,0,0,0,1,0,
-112,0,0,1,0,0,17,205,0,0,1,1,0,1,0,1,97,0,0,
-131,0,0,1,0,0,45,211,0,0,0,0,0,1,0,
-146,0,0,1,0,0,13,219,0,0,8,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
+82,0,0,1,0,0,15,194,0,0,0,0,0,1,0,
+97,0,0,2,0,0,29,196,0,0,0,0,0,1,0,
+112,0,0,1,0,0,17,235,0,0,1,1,0,1,0,1,97,0,0,
+131,0,0,1,0,0,45,241,0,0,0,0,0,1,0,
+146,0,0,1,0,0,13,249,0,0,8,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,
 0,0,2,9,0,0,2,9,0,0,
-193,0,0,1,0,0,15,268,0,0,0,0,0,1,0,
-208,0,0,3,0,0,29,270,0,0,0,0,0,1,0,
-223,0,0,1,0,0,17,292,0,0,1,1,0,1,0,1,97,0,0,
-242,0,0,1,0,0,45,296,0,0,0,0,0,1,0,
-257,0,0,1,0,0,13,305,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,
-288,0,0,1,0,0,15,345,0,0,0,0,0,1,0,
-303,0,0,4,0,0,24,414,0,0,1,1,0,1,0,1,97,0,0,
-322,0,0,5,0,0,29,415,0,0,0,0,0,1,0,
-337,0,0,1,0,0,17,481,0,0,1,1,0,1,0,1,97,0,0,
-356,0,0,1,0,0,45,485,0,0,0,0,0,1,0,
-371,0,0,1,0,0,13,495,0,0,2,0,0,1,0,2,3,0,0,2,9,0,0,
-394,0,0,1,0,0,15,512,0,0,0,0,0,1,0,
-409,0,0,1,0,0,17,535,0,0,1,1,0,1,0,1,97,0,0,
-428,0,0,1,0,0,45,541,0,0,0,0,0,1,0,
-443,0,0,1,0,0,13,548,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,2,3,0,0,
-474,0,0,1,0,0,15,576,0,0,0,0,0,1,0,
-489,0,0,6,0,0,29,578,0,0,0,0,0,1,0,
-504,0,0,1,0,0,17,599,0,0,1,1,0,1,0,1,97,0,0,
-523,0,0,1,0,0,45,605,0,0,0,0,0,1,0,
-538,0,0,1,0,0,13,610,0,0,1,0,0,1,0,2,97,0,0,
-557,0,0,1,0,0,15,615,0,0,0,0,0,1,0,
+193,0,0,1,0,0,15,298,0,0,0,0,0,1,0,
+208,0,0,3,0,0,29,300,0,0,0,0,0,1,0,
+223,0,0,1,0,0,17,322,0,0,1,1,0,1,0,1,97,0,0,
+242,0,0,1,0,0,45,326,0,0,0,0,0,1,0,
+257,0,0,1,0,0,13,335,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,9,0,0,2,9,0,0,
+288,0,0,1,0,0,15,375,0,0,0,0,0,1,0,
+303,0,0,4,0,0,24,444,0,0,1,1,0,1,0,1,97,0,0,
+322,0,0,5,0,0,29,445,0,0,0,0,0,1,0,
+337,0,0,1,0,0,17,511,0,0,1,1,0,1,0,1,97,0,0,
+356,0,0,1,0,0,45,515,0,0,0,0,0,1,0,
+371,0,0,1,0,0,13,525,0,0,2,0,0,1,0,2,3,0,0,2,9,0,0,
+394,0,0,1,0,0,15,542,0,0,0,0,0,1,0,
+409,0,0,1,0,0,17,566,0,0,1,1,0,1,0,1,97,0,0,
+428,0,0,1,0,0,45,572,0,0,0,0,0,1,0,
+443,0,0,1,0,0,13,579,0,0,4,0,0,1,0,2,9,0,0,2,9,0,0,2,3,0,0,2,3,0,0,
+474,0,0,1,0,0,15,623,0,0,0,0,0,1,0,
+489,0,0,6,0,0,29,625,0,0,0,0,0,1,0,
+504,0,0,7,0,0,24,717,0,0,1,1,0,1,0,1,97,0,0,
+523,0,0,8,0,0,29,718,0,0,0,0,0,1,0,
+538,0,0,9,0,0,24,813,0,0,1,1,0,1,0,1,97,0,0,
+557,0,0,10,0,0,29,816,0,0,0,0,0,1,0,
+572,0,0,11,0,0,24,868,0,0,1,1,0,1,0,1,97,0,0,
+591,0,0,12,0,0,29,871,0,0,0,0,0,1,0,
+606,0,0,1,0,0,17,902,0,0,1,1,0,1,0,1,97,0,0,
+625,0,0,1,0,0,45,908,0,0,0,0,0,1,0,
+640,0,0,1,0,0,13,913,0,0,3,0,0,1,0,2,9,0,0,2,3,0,0,2,3,0,0,
+667,0,0,1,0,0,15,924,0,0,0,0,0,1,0,
 };
 
 
@@ -197,6 +203,11 @@ void gogakD();
 int check_gogak();
 void food_list();
 int search_food();
+void updateFood();
+void do_updateFood(int uPrice, int uPamount);
+void input_food();
+int choose_ufood();
+void delete_food(char foodname[50]);
 
 // win32 Visual C 2010 이상컴파일시 추가
 #define getch() _getch()
@@ -206,6 +217,10 @@ int search_food();
 #include < windows.h >
 
 #define getch() _getch()
+char proNAME[50];
+int proPRICE;
+int proAMOUNT;
+
 int fail;
   /* EXEC SQL WHENEVER SQLERROR DO fail = sql_error("\7ORACLE ERROR:\n"); */ 
 
@@ -220,7 +235,28 @@ void empMain(){
 		gotoxy(32,17);
 		gets_s(emp_select, sizeof emp_select);
 		if( strcmp(emp_select,"1") == 0){
-			food_list();
+			char food_select[10];
+			while(1){
+				gotoxy(27, 18);
+				printf("1. 등록 2. 상품보기 >> ");
+				gets_s(food_select, sizeof food_select);
+				if(food_select[0]=='\0'){
+					break;
+				}else{
+					if(strcmp(food_select,"1")==0){
+						input_food();
+					}else if(strcmp(food_select,"2")==0){
+						food_list();
+					}else{
+						gotoxy(27, 19);
+						printf("잘 못 입력하였습니다.");
+						getch();
+						gotoxy(27, 19);
+						printf("                      ");
+					}
+				}
+				
+			}
 		}else if (strcmp(emp_select,"2") == 0){
 			gogak_list();
 		}else if (strcmp(emp_select,"3") == 0){
@@ -1438,10 +1474,11 @@ void food_list(){
 	clrscr();
 	print_screen("food_list.txt");
 	
-	int x,y,count=0, page=0;
+	int x,y,count=0, page=1;
 	/* EXEC SQL BEGIN DECLARE SECTION; */ 
 
-   		/* varchar pnum[100]; */ 
+   		
+		/* varchar pnum[100]; */ 
 struct { unsigned short len; unsigned char arr[100]; } pnum;
 
 		/* varchar pname[100]; */ 
@@ -1604,7 +1641,22 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 
 		gotoxy(x,y);
 		printf("%s   %15s            %-7d    %-3d", pnum.arr, pname.arr ,pprice,pamount);
-
+		gotoxy(41,15);
+		printf("%-2d",page);
+		if( count == 5){
+			page++;
+			count = 0;
+   			int a = choose_ufood();
+			if(a==0){
+				return;
+			}
+			gotoxy(18,11); //이전 화면 부분 클리어	
+			for(int i= 0; i < 5; i++){
+				printf("                                                                                             \n");
+			}
+			y = 10 ;
+			
+		}	
 		y++;
 		count++;
 		
@@ -1615,13 +1667,14 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 	            	  	for(int i= 0; i < 5; i++){
 				printf("                                                                                             \n");
 			}
-			y = 11 ;
+			y = 10 ;
 		}
 
    	 }
-	gotoxy(71,18);
-    	printf("(END)");
-	getch();
+	choose_ufood();
+	gotoxy(27,17);
+	printf("Enter key를 누르면 종료합니다.");
+	getE();
 
     	/* Close the cursor. */
    	/* EXEC SQL CLOSE z_cursor; */ 
@@ -1664,27 +1717,456 @@ struct { unsigned short len; unsigned char arr[100]; } pname;
 
 
 }
+/*---------------   음식 선택 함수 --------------------*/
+int choose_ufood(){
+	char c;
+	while (1) {
+		if (_kbhit()) {             
+			c = _getch();        
+			if (c == -32) {       
+				c = _getch();   
+				if(c==77){
+					break;
+				}else if(c==80){
+					while(1){
+						char a[5];
+						while(1){
+							gotoxy(26,18);
+							printf("1. 변경 2. 삭제 >> ");
+							gets_s(a, sizeof a);
+							char b[20];
+							if(a[0]=='2'){
+								gotoxy(21,19);
+								printf("삭제할 상품 명을 입력해주세요 >> ");
+								gets_s(b, sizeof(b));
+								delete_food(b);
+								empMain();
+							}else if(a[0]=='1'){
+								gotoxy(21,19);
+								printf("변경할 상품 명을 입력해주세요 >> ");
+								gets_s(b, sizeof b);
+								if(b[0] !='\0'){
+									int c = search_food(b);
+									if(c == 0){
+										gotoxy(32,21);
+										printf("잘못된 상품명입니다.");
+										getch();	
+										gotoxy(32,21);
+										printf("                            ");
+									}else if(c==1){
+										updateFood(b);
+										return 1;
+									}
+								}else{
+									gotoxy(30,22);
+									printf("변경를 취소했습니다.");
+									getch();
+									return 0;
+								}
+							}else{
+								gotoxy(30,19);
+								printf("다시 입력해 주세요..");
+								getch();
+								gotoxy(30,19);
+								printf("                         ");
+								gotoxy(26,18);
+								printf("                                                              ");
+							}
+						}
+						
+						
+					}
+				}
+	
+			}else if (c==13){
+					gotoxy(32,21);
+					printf("변경를 종료합니다.");
+					getch();
+					return 0;
+			}
+		}
+	}
+}
+/*---------------   음식 삭제 함수 --------------------*/
+void delete_food(char foodname[50]){
+/* EXEC SQL BEGIN DECLARE SECTION; */ 
+
+
+	   char dynstmt[1000];
+
+	/* EXEC SQL END DECLARE SECTION; */ 
+
+	
+	
+	char  flag[10];
+
+   	//EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	
+	while(1){
+		gotoxy(29,20);
+		printf("정말 삭제 시키겠습니까?? (y/n) >> ");   
+		gets_s(flag, sizeof flag);
+   		if( strcmp(flag,"y") == 0|| strcmp(flag,"Y") == 0 ){
+       			sprintf(dynstmt,"delete from product where pname ='%s'", foodname);
+			
+				/* EXEC SQL EXECUTE IMMEDIATE :dynstmt ; */ 
+
+{
+    struct sqlexd sqlstm;
+    sqlstm.sqlvsn = 13;
+    sqlstm.arrsiz = 8;
+    sqlstm.sqladtp = &sqladt;
+    sqlstm.sqltdsp = &sqltds;
+    sqlstm.stmt = "";
+    sqlstm.iters = (unsigned int  )1;
+    sqlstm.offset = (unsigned int  )504;
+    sqlstm.cud = sqlcud0;
+    sqlstm.sqlest = (unsigned char  *)&sqlca;
+    sqlstm.sqlety = (unsigned short)4352;
+    sqlstm.occurs = (unsigned int  )0;
+    sqlstm.sqhstv[0] = (         void  *)dynstmt;
+    sqlstm.sqhstl[0] = (unsigned int  )1000;
+    sqlstm.sqhsts[0] = (         int  )0;
+    sqlstm.sqindv[0] = (         void  *)0;
+    sqlstm.sqinds[0] = (         int  )0;
+    sqlstm.sqharm[0] = (unsigned int  )0;
+    sqlstm.sqadto[0] = (unsigned short )0;
+    sqlstm.sqtdso[0] = (unsigned short )0;
+    sqlstm.sqphsv = sqlstm.sqhstv;
+    sqlstm.sqphsl = sqlstm.sqhstl;
+    sqlstm.sqphss = sqlstm.sqhsts;
+    sqlstm.sqpind = sqlstm.sqindv;
+    sqlstm.sqpins = sqlstm.sqinds;
+    sqlstm.sqparm = sqlstm.sqharm;
+    sqlstm.sqparc = sqlstm.sqharc;
+    sqlstm.sqpadto = sqlstm.sqadto;
+    sqlstm.sqptdso = sqlstm.sqtdso;
+    sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+    if (sqlca.sqlcode == 1403) break;
+    if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+
+		       	/* EXEC SQL COMMIT WORK ; */ 
+
+{
+          struct sqlexd sqlstm;
+          sqlstm.sqlvsn = 13;
+          sqlstm.arrsiz = 8;
+          sqlstm.sqladtp = &sqladt;
+          sqlstm.sqltdsp = &sqltds;
+          sqlstm.iters = (unsigned int  )1;
+          sqlstm.offset = (unsigned int  )523;
+          sqlstm.cud = sqlcud0;
+          sqlstm.sqlest = (unsigned char  *)&sqlca;
+          sqlstm.sqlety = (unsigned short)4352;
+          sqlstm.occurs = (unsigned int  )0;
+          sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+          if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+ 
+				gotoxy(31,21);
+				printf("삭제를 완료했습니다..\n");
+				getch();
+				break;
+			
+		   }
+   		else {
+			gotoxy(31,21);
+      		 	printf("삭제를 취소했습니다.");
+			getch();
+			break;
+   		}
+		
+	}
+
+}
 
 /*---------------   음식 등록 함수 --------------------*/
 void input_food(){
 	clrscr();
 	print_screen("foodinfo.txt");
+	/* EXEC SQL BEGIN DECLARE SECTION; */ 
+
+
+	   char dynstmt[1000];
+
+  	/* EXEC SQL END DECLARE SECTION; */ 
+
+
+	char food_name[50];
+	char food_price[50];
+	char food_amount[50];
+
+	while(1){
+		gotoxy(37, 10);
+		gets_s(food_name, sizeof food_name);
+
+		gotoxy(37, 12);
+		gets_s(food_price, sizeof food_price);
+
+		gotoxy(37, 14);
+		gets_s(food_amount, sizeof food_amount);
+		if(food_name[0] =='\0' ||food_price[0]=='\0'||food_amount[0]=='\0' ){
+				gotoxy(24,17);
+				printf("작성하지 않은 항목이 존재합니다.");
+				getch();
+				gotoxy(24,17);
+				printf("                                ");
+		}else{
+			break;
+		}
+		gotoxy(37,10);
+		for(int i=0; i<4; i++){
+			printf("                   \n\n");
+		}
+	}
+
 	
-	
-	
+	while(1){
+			gotoxy(28,17);
+			printf("확정하시겠습니까?(y/n)>>");
+		
+			char a[10]; // 확정할껀지 받는 변수
+			gets_s(a,sizeof a);
+			if(strcmp(a,"y")==0 || strcmp(a,"Y")==0){
+				int exist = search_food(food_name);
+				if(exist == 1){
+					sprintf(dynstmt,"update product set pprice=%s, pamount=%s where pname = '%s'", food_price,food_amount, food_name);
+					gotoxy(30,18);
+					printf("추가가 완료되었습니다.");
+					getch();
+					empMain();
+				}else if(exist==0) {
+					sprintf(dynstmt,"insert into product values ((nvl2((select max(pnum) from product),(select max(pnum)+1 from product),1)), '%s', %s, %s)" , food_name , food_amount,food_price);
+
+					/* 실행시킬 SQL 문장*/
+
+					gotoxy(30,18);
+					printf("등록이 완료되었습니다.");
+					getch();
+					break;
+					
+				}
+			}else if(strcmp(a,"n")==0 || strcmp(a,"N")==0){
+				gotoxy(30,18);
+				printf("등록이 취소되었습니다.");
+				break;
+			}else{		
+				gotoxy(23,17); // 잘 못 입력 되었다는 것을 알리기
+				printf("잘 못된 입력입니다. 다시 입력해주세요");
+				getch();
+				gotoxy(23,17);
+				printf("                                         ");
+			}
+		}
+		while(1){
+			/* EXEC SQL EXECUTE IMMEDIATE :dynstmt ; */ 
+
+{
+   struct sqlexd sqlstm;
+   sqlstm.sqlvsn = 13;
+   sqlstm.arrsiz = 8;
+   sqlstm.sqladtp = &sqladt;
+   sqlstm.sqltdsp = &sqltds;
+   sqlstm.stmt = "";
+   sqlstm.iters = (unsigned int  )1;
+   sqlstm.offset = (unsigned int  )538;
+   sqlstm.cud = sqlcud0;
+   sqlstm.sqlest = (unsigned char  *)&sqlca;
+   sqlstm.sqlety = (unsigned short)4352;
+   sqlstm.occurs = (unsigned int  )0;
+   sqlstm.sqhstv[0] = (         void  *)dynstmt;
+   sqlstm.sqhstl[0] = (unsigned int  )1000;
+   sqlstm.sqhsts[0] = (         int  )0;
+   sqlstm.sqindv[0] = (         void  *)0;
+   sqlstm.sqinds[0] = (         int  )0;
+   sqlstm.sqharm[0] = (unsigned int  )0;
+   sqlstm.sqadto[0] = (unsigned short )0;
+   sqlstm.sqtdso[0] = (unsigned short )0;
+   sqlstm.sqphsv = sqlstm.sqhstv;
+   sqlstm.sqphsl = sqlstm.sqhstl;
+   sqlstm.sqphss = sqlstm.sqhsts;
+   sqlstm.sqpind = sqlstm.sqindv;
+   sqlstm.sqpins = sqlstm.sqinds;
+   sqlstm.sqparm = sqlstm.sqharm;
+   sqlstm.sqparc = sqlstm.sqharc;
+   sqlstm.sqpadto = sqlstm.sqadto;
+   sqlstm.sqptdso = sqlstm.sqtdso;
+   sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+   if (sqlca.sqlcode == 1403) break;
+   if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
 }
+
+
+			break;
+		}
+		/* EXEC SQL COMMIT WORK ; */ 
+
+{
+  struct sqlexd sqlstm;
+  sqlstm.sqlvsn = 13;
+  sqlstm.arrsiz = 8;
+  sqlstm.sqladtp = &sqladt;
+  sqlstm.sqltdsp = &sqltds;
+  sqlstm.iters = (unsigned int  )1;
+  sqlstm.offset = (unsigned int  )557;
+  sqlstm.cud = sqlcud0;
+  sqlstm.sqlest = (unsigned char  *)&sqlca;
+  sqlstm.sqlety = (unsigned short)4352;
+  sqlstm.occurs = (unsigned int  )0;
+  sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+  if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+
+		empMain();
+}
+/*---------------   음식 업데이트 함수 --------------------*/
+void updateFood(char ufood_name[50]){
+	/* EXEC SQL BEGIN DECLARE SECTION; */ 
+
+
+	   char dynstmt[1000];
+
+  	/* EXEC SQL END DECLARE SECTION; */ 
+
+   char pPrice[10];
+   char pAmount[10];
+  
+   //EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
+	search_food(ufood_name);
+	clrscr();
+	print_screen("foodinfo.txt");
+	gotoxy(39,8);
+	printf("수정");
+	while(1){
+		
+		gotoxy(37,10);
+		printf("%s", proNAME);
+		
+		
+		gotoxy(37,12);
+		gets_s(pPrice, sizeof pPrice);
+		if(pPrice[0] == '\0' ) {
+			gotoxy(35,12);
+			sprintf(pPrice,"%d",proPRICE);
+			printf("%d", proPRICE );
+		}
+
+		gotoxy(37,14);
+		gets_s(pAmount, sizeof pAmount);
+		if(pAmount[0] == '\0' ) {
+			gotoxy(35,14);
+			sprintf(pAmount,"%d",proAMOUNT);
+			printf("%d",  proAMOUNT);
+			
+		}
+		
+		gotoxy(23,17);
+		printf("정말로 변경하시겠습니까? (y/n) >> ");
+		char flag[10];
+		gets_s(flag, sizeof flag);
+		if( strcmp(flag,"y")==0 || strcmp(flag,"Y")==0 ){
+					sprintf(dynstmt,"update product set pprice=%s, pamount=%s where pname = '%s'",pPrice, pAmount, proNAME);
+					gotoxy(30,18);
+						printf("변경이 완료되습니다! ");
+					getch();
+					while(1){
+						/* EXEC SQL EXECUTE IMMEDIATE :dynstmt ; */ 
+
+{
+      struct sqlexd sqlstm;
+      sqlstm.sqlvsn = 13;
+      sqlstm.arrsiz = 8;
+      sqlstm.sqladtp = &sqladt;
+      sqlstm.sqltdsp = &sqltds;
+      sqlstm.stmt = "";
+      sqlstm.iters = (unsigned int  )1;
+      sqlstm.offset = (unsigned int  )572;
+      sqlstm.cud = sqlcud0;
+      sqlstm.sqlest = (unsigned char  *)&sqlca;
+      sqlstm.sqlety = (unsigned short)4352;
+      sqlstm.occurs = (unsigned int  )0;
+      sqlstm.sqhstv[0] = (         void  *)dynstmt;
+      sqlstm.sqhstl[0] = (unsigned int  )1000;
+      sqlstm.sqhsts[0] = (         int  )0;
+      sqlstm.sqindv[0] = (         void  *)0;
+      sqlstm.sqinds[0] = (         int  )0;
+      sqlstm.sqharm[0] = (unsigned int  )0;
+      sqlstm.sqadto[0] = (unsigned short )0;
+      sqlstm.sqtdso[0] = (unsigned short )0;
+      sqlstm.sqphsv = sqlstm.sqhstv;
+      sqlstm.sqphsl = sqlstm.sqhstl;
+      sqlstm.sqphss = sqlstm.sqhsts;
+      sqlstm.sqpind = sqlstm.sqindv;
+      sqlstm.sqpins = sqlstm.sqinds;
+      sqlstm.sqparm = sqlstm.sqharm;
+      sqlstm.sqparc = sqlstm.sqharc;
+      sqlstm.sqpadto = sqlstm.sqadto;
+      sqlstm.sqptdso = sqlstm.sqtdso;
+      sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+      if (sqlca.sqlcode == 1403) break;
+      if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+
+						break;
+					}
+					/* EXEC SQL COMMIT WORK ; */ 
+
+{
+     struct sqlexd sqlstm;
+     sqlstm.sqlvsn = 13;
+     sqlstm.arrsiz = 8;
+     sqlstm.sqladtp = &sqladt;
+     sqlstm.sqltdsp = &sqltds;
+     sqlstm.iters = (unsigned int  )1;
+     sqlstm.offset = (unsigned int  )591;
+     sqlstm.cud = sqlcud0;
+     sqlstm.sqlest = (unsigned char  *)&sqlca;
+     sqlstm.sqlety = (unsigned short)4352;
+     sqlstm.occurs = (unsigned int  )0;
+     sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+     if (sqlca.sqlcode < 0) (fail=sql_error("\7ORACLE ERROR:\n"));
+}
+
+
+					empMain();
+		}
+		else {
+			gotoxy(30,18);
+				printf("변경을 취소했습니다.");
+			getch();
+			break;
+		}
+		gotoxy(37,12);
+		printf("                                                          ");   
+		gotoxy(37,14);
+		printf("                                                           ");
+	}
+
+}
+
+
 /*---------------   음식 검색함수 --------------------*/
 int search_food(char food_name[20]){
 	/* EXEC SQL BEGIN DECLARE SECTION; */ 
 
-   		char pname[10];
+   		/* varchar sPname[20]; */ 
+struct { unsigned short len; unsigned char arr[20]; } sPname;
+
+		int sPamount;
+		int sPprice;
+		
   		char dynstmt[1000];
 	/* EXEC SQL END DECLARE SECTION; */ 
 
 
 	/* 실행시킬 SQL 문장*/
-   	sprintf(dynstmt,"select pname from product where = %s", food_name); 
-
+   	sprintf(dynstmt,"select pname, pamount, pprice from product where pname= '%s'", food_name); 
+	
 	/* EXEC SQL PREPARE S FROM :dynstmt ; */ 
 
 {
@@ -1695,7 +2177,7 @@ int search_food(char food_name[20]){
  sqlstm.sqltdsp = &sqltds;
  sqlstm.stmt = "";
  sqlstm.iters = (unsigned int  )1;
- sqlstm.offset = (unsigned int  )504;
+ sqlstm.offset = (unsigned int  )606;
  sqlstm.cud = sqlcud0;
  sqlstm.sqlest = (unsigned char  *)&sqlca;
  sqlstm.sqlety = (unsigned short)4352;
@@ -1738,7 +2220,7 @@ int search_food(char food_name[20]){
  sqlstm.sqltdsp = &sqltds;
  sqlstm.stmt = "";
  sqlstm.iters = (unsigned int  )1;
- sqlstm.offset = (unsigned int  )523;
+ sqlstm.offset = (unsigned int  )625;
  sqlstm.selerr = (unsigned short)1;
  sqlstm.sqlpfmem = (unsigned int  )0;
  sqlstm.cud = sqlcud0;
@@ -1756,7 +2238,7 @@ int search_food(char food_name[20]){
 
 
   	for (;;){
-		/* EXEC SQL FETCH x_cursor INTO :pname; */ 
+		/* EXEC SQL FETCH x_cursor INTO :sPname, :sPamount, :sPprice; */ 
 
 {
   struct sqlexd sqlstm;
@@ -1765,7 +2247,7 @@ int search_food(char food_name[20]){
   sqlstm.sqladtp = &sqladt;
   sqlstm.sqltdsp = &sqltds;
   sqlstm.iters = (unsigned int  )1;
-  sqlstm.offset = (unsigned int  )538;
+  sqlstm.offset = (unsigned int  )640;
   sqlstm.selerr = (unsigned short)1;
   sqlstm.sqlpfmem = (unsigned int  )0;
   sqlstm.cud = sqlcud0;
@@ -1774,14 +2256,30 @@ int search_food(char food_name[20]){
   sqlstm.occurs = (unsigned int  )0;
   sqlstm.sqfoff = (           int )0;
   sqlstm.sqfmod = (unsigned int )2;
-  sqlstm.sqhstv[0] = (         void  *)pname;
-  sqlstm.sqhstl[0] = (unsigned int  )10;
+  sqlstm.sqhstv[0] = (         void  *)&sPname;
+  sqlstm.sqhstl[0] = (unsigned int  )22;
   sqlstm.sqhsts[0] = (         int  )0;
   sqlstm.sqindv[0] = (         void  *)0;
   sqlstm.sqinds[0] = (         int  )0;
   sqlstm.sqharm[0] = (unsigned int  )0;
   sqlstm.sqadto[0] = (unsigned short )0;
   sqlstm.sqtdso[0] = (unsigned short )0;
+  sqlstm.sqhstv[1] = (         void  *)&sPamount;
+  sqlstm.sqhstl[1] = (unsigned int  )sizeof(int);
+  sqlstm.sqhsts[1] = (         int  )0;
+  sqlstm.sqindv[1] = (         void  *)0;
+  sqlstm.sqinds[1] = (         int  )0;
+  sqlstm.sqharm[1] = (unsigned int  )0;
+  sqlstm.sqadto[1] = (unsigned short )0;
+  sqlstm.sqtdso[1] = (unsigned short )0;
+  sqlstm.sqhstv[2] = (         void  *)&sPprice;
+  sqlstm.sqhstl[2] = (unsigned int  )sizeof(int);
+  sqlstm.sqhsts[2] = (         int  )0;
+  sqlstm.sqindv[2] = (         void  *)0;
+  sqlstm.sqinds[2] = (         int  )0;
+  sqlstm.sqharm[2] = (unsigned int  )0;
+  sqlstm.sqadto[2] = (unsigned short )0;
+  sqlstm.sqtdso[2] = (unsigned short )0;
   sqlstm.sqphsv = sqlstm.sqhstv;
   sqlstm.sqphsl = sqlstm.sqhstl;
   sqlstm.sqphss = sqlstm.sqhsts;
@@ -1797,6 +2295,12 @@ int search_food(char food_name[20]){
 }
 
 
+		
+		sPname.arr[sPname.len] = '\0' ;
+		strcpy(proNAME, sPname.arr);
+		proPRICE = sPprice;
+		proAMOUNT = sPamount;
+
 		return 1;
    	 }
 	
@@ -1810,7 +2314,7 @@ int search_food(char food_name[20]){
     sqlstm.sqladtp = &sqladt;
     sqlstm.sqltdsp = &sqltds;
     sqlstm.iters = (unsigned int  )1;
-    sqlstm.offset = (unsigned int  )557;
+    sqlstm.offset = (unsigned int  )667;
     sqlstm.cud = sqlcud0;
     sqlstm.sqlest = (unsigned char  *)&sqlca;
     sqlstm.sqlety = (unsigned short)4352;

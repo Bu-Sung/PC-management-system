@@ -220,7 +220,7 @@ while(1){
 			getch();
 			EXEC SQL EXECUTE IMMEDIATE :dynstmt ;
 			
-		       	EXEC SQL COMMIT WORK ; 
+		    EXEC SQL COMMIT WORK ; 
 			break;
 			
 		   }
@@ -736,52 +736,3 @@ EXEC SQL END DECLARE SECTION;
     EXEC SQL CLOSE t_cursor; 
 	return price;
 }
-
-/*---------------   회원 정보 찾기 함수 --------------------*/
-int Select_tuple(char *no)
-{
-EXEC SQL BEGIN DECLARE SECTION;
-    varchar  v_id[20];
-    varchar  v_name[20];
-    varchar  v_pw[20];
-    varchar v_phone[20];
-    int v_using;
-
-    char dynstmt[1000];
-EXEC SQL END DECLARE SECTION;
-    
-    
-    //EXEC SQL WHENEVER SQLERROR DO sql_error("\7ORACLE ERROR:\n");
-   
-    sprintf(dynstmt,"SELECT gid, gpw, gname, phone,pc_using  FROM gogak where gid = '%s'", no) ;
-	
-
-    EXEC SQL PREPARE S FROM :dynstmt ;
-
-    EXEC SQL DECLARE c_cursor CURSOR FOR S ; 
-
-    EXEC SQL OPEN c_cursor ; 
-
-  
-    EXEC SQL WHENEVER NOT FOUND do break;
-    for(;;)
-    {
-        EXEC SQL FETCH c_cursor INTO :v_id, :v_pw, :v_name, :v_phone, :v_using ;
-
-	    v_id.arr[v_id.len] = '\0';
-	    v_pw.arr[v_pw.len] = '\0';
-	    v_name.arr[v_name.len] = '\0';
-	    v_phone.arr[v_phone.len] = '\0';
-	    strcpy(gogakID, v_id.arr);
-	    strcpy(gogakPW, v_pw.arr);
-	    strcpy(gogakNAME, v_name.arr);
-             	    strcpy(gogakPHONE, v_phone.arr);
-      	    gogakUSING = v_using;
-	return 1;
-    }
-return 0;	
-    EXEC SQL CLOSE c_cursor; 
-   
-
-}
-
